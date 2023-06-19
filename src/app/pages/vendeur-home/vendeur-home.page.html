@@ -1,0 +1,231 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-buttons slot="end">
+      <ion-menu-button menu="vendeur-menu" style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="tajawal-Bold cssTitleHead">
+      واجهة البائع
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="bubbles" refreshingText="rechargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="cssSmallCard2">
+          <div>
+            <span class="cssLibel almarai-ExtraBold">اليوم :</span>
+            <span class="cssValue almarai-Regular">{{data.jour}}</span>
+          </div>
+          <div>
+            <span class="cssLibel almarai-ExtraBold">المنطقة :</span>
+            <span class="cssValue almarai-Regular">{{data.zone}}</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="cssCard3">
+          <div class="cssFlex">
+            <div>
+              <p class="cssLibel almarai-ExtraBold"> عدد النقاط  </p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.noteJour&&!dashboard"></ion-spinner>{{data.noteJour?data.noteJour:dashboard?0:data.noteJour}}</p>
+            </div>
+            <div>
+              <p class="cssLibel almarai-ExtraBold">عدد العملاء</p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.nbrTotalConso&&!dashboard"></ion-spinner>{{data.nbrTotalConso}}</p>
+            </div>
+          </div>
+          <div class="cssFlex cssFlexColumn">
+            <div (click)="refusedOrder()" class="cssSmallCard3 ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <p class="cssLibel almarai-Bold">
+                <fa-icon icon="times"></fa-icon>
+                الذين رفضوا الطلب
+              </p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.consoRefuse&&!dashboard"></ion-spinner>{{data.consoRefuse}}</p>
+            </div>
+            <div (click)="waitingOrder()" class="cssSmallCard4 ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <p class="cssLibel almarai-Bold">
+                <fa-icon icon="hourglass-half"></fa-icon>
+                الذين لم يقوموا بالطلب
+              </p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.consoAttente&&!dashboard"></ion-spinner>{{data.consoAttente}}</p>
+            </div>
+            <div (click)="didOrder()" class="cssSmallCard5 ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <p class="cssLibel almarai-Bold">
+                <fa-icon icon="check"></fa-icon>
+                الذين قاموا بالطلب
+              </p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.consoValide&&!dashboard"></ion-spinner>{{data.consoValide}}</p>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="display: flex; justify-content: center;">
+      <ion-spinner *ngIf="!dashboard"></ion-spinner>
+    </ion-row>
+    <div>
+      
+    </div>
+    <div *ngIf="demandeR">
+      <ion-row *ngFor="let d of data.demandeR"> 
+        <ion-col class="ion-no-padding" >
+          <div class="cssSmallCard6">
+            <div class="cssName">
+              <span class="cssBgIcon1">
+                <fa-icon icon="times"></fa-icon>
+              </span>
+              <span class="almarai-Bold cssNameValue" style="color: #E50914;">{{d.nomprenom}}</span>
+            </div>
+            <div class="cssMsg">
+              <span class="almarai-Bold cssRefuse" style="color: #E50914;"><span class="almarai-Bold">سبب الرفض: </span> {{d.motif}}</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="demandeV">
+      <ion-row *ngFor="let d of data.demandeV">
+        <ion-col class="ion-no-padding" [routerLink]="['/vendeur-demande-conso', d]">
+          <div class="cssSmallCard6">
+            <div class="cssName">
+              <span class="cssBgIcon3">
+                <fa-icon icon="check"></fa-icon>
+              </span>
+              <span class="almarai-Bold cssNameValue" style="color: #00A651;">{{d.nomprenom}}</span>
+            </div>
+            <div class="cssNote">
+              <span class="cssValue" style="color: #00A651;">{{d.pointtotal}}</span>
+              <span class="almarai-Bold cssUnit" style="color: #00A651;">نقطة</span>
+            </div>
+            <div class="cssPrix">
+              <span class="cssValue" style="color: #00A651;">{{d.prixtotal}}</span>
+              <span class="almarai-Bold cssUnit" style="color: #00A651;">درهم</span>
+            </div>
+
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="demandeA">
+      <ion-row *ngFor="let d of data.demandeA">
+        <ion-col class="ion-no-padding" >
+          <div class="cssSmallCard6">
+            <div class="cssName" style=" flex: 3" [routerLink]="['/vendeur-demande-conso', d]">
+              <span style="    position: relative;
+              top: -2px;" class="cssBgIcon2">
+                <fa-icon style="    position: relative;
+                top: 2px;" icon="hourglass-half"></fa-icon>
+              </span>
+              <span class="almarai-Bold cssNameValue" style="color: #fe5e00;    position: relative;
+              top: 0px;">{{d.nomprenom}}</span>
+            </div>
+            <div (click)="navigate(d.lat, d.lng)" class="cssMsg" style="flex: 1;">
+              <span  class="almarai-Bold cssRefuse" style="color: #fe5e00; position: relative;
+                            top: 6px;
+              right: 18px;"> {{ d.distance?d.distance.toFixed(0):'!' }} <br> <span style="    position: relative;
+        top: -10px;
+    right: -5px;
+">{{unit}}</span> </span>
+            </div>
+            <div class="cssMsg" style="flex: 3;">
+              <span class="almarai-Bold cssRefuse" style="color: #fe5e00;"> {{(d.lastorderdate?'أخر طلب في ' + (d.lastorderdate | date: 'dd/MM/yyyy') : 'لا زال لم يقم بأي طلب بعد') }}</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+        
+  </ion-grid>
+
+
+  <ion-grid class="ion-no-padding">
+    <ion-row (click)="other_places = !other_places">
+      <ion-col class="ion-no-padding">
+        <div class="cssSmallCard2">
+          <div >
+            <span class="cssLibel almarai-ExtraBold"> من مناطقك الأخرى</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="other_places">
+      <ion-col class="ion-no-padding">
+        <div class="cssCard3"> 
+          <div class="cssFlex">
+            <div>
+              <p class="cssLibel almarai-ExtraBold"> عدد النقاط  </p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.noteJour_other_places&&!dashboard"></ion-spinner>{{data.noteJour_other_places?data.noteJour_other_places:dashboard?0:data.noteJour_other_places}}</p>
+            </div>
+            <div>
+              <p class="cssLibel almarai-ExtraBold">عدد العملاء</p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.nbrTotalConso_other_places&&!dashboard"></ion-spinner>{{data.nbrTotalConso_other_places}}</p>
+            </div>
+          </div>
+          <div class="cssFlex cssFlexColumn">
+            <div (click)="didOrder_other_places()" class="cssSmallCard5 ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <p class="cssLibel almarai-Bold">
+                <fa-icon icon="check"></fa-icon>
+                الذين قاموا بالطلب
+              </p>
+              <p class="cssValue almarai-Regular"><ion-spinner *ngIf="!data.consoValide_other_places&&!dashboard"></ion-spinner>{{data.consoValide_other_places}}</p>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="display: flex; justify-content: center;">
+      <ion-spinner *ngIf="!dashboard"></ion-spinner>
+    </ion-row>
+
+    <div *ngIf="demandeV_other_places">
+      <ion-row *ngFor="let d of data.demandeV_other_places">
+        <ion-col class="ion-no-padding" [routerLink]="['/vendeur-demande-conso', d]">
+          <div class="cssSmallCard6">
+            <div class="cssName">
+              <span class="cssBgIcon3">
+                <fa-icon icon="check"></fa-icon>
+              </span>
+              <span class="almarai-Bold cssNameValue">{{d.nomprenom}}</span>
+            </div>
+            <div class="cssNote">
+              <span class="cssValue">{{d.pointtotal}}</span>
+              <span class="almarai-Bold cssUnit">نقطة</span>
+            </div>
+            <div class="cssPrix">
+              <span class="cssValue">{{d.prixtotal}}</span>
+              <span class="almarai-Bold cssUnit">درهم</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+
+</ion-content>
+
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

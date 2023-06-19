@@ -1,0 +1,212 @@
+.cssContainer {
+    width: 96%;
+    margin: 0px auto;
+}
+.cssCategories {
+    height: 106px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.cssCategories .cssImg {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    margin: 2px 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.cssCategories .cssLibel {
+    text-align: center;
+    font-size: 13px;
+}
+.cssQuantity {
+    display: flex;
+    justify-content: space-between;
+    width: 100% !important;
+    height: 35px !important;
+    background: #ff4747 !important;
+    border-radius: 4px;
+    margin: 5px 0px !important;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.cssQuantity .cssAddMinus {
+    width: 30%;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.cssQuantity .cssQty {
+    width: 40%;
+    font-size: 21px;
+    text-align: center;
+    font-weight: 700;
+    color: #ff4747;
+    background: #fff !important;
+    border: 1px solid #ff4747;
+}
+.cssCard {
+    width: 100% !important;
+    height: 350px !important;
+    margin: 0px !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 6px !important;
+    cursor: pointer;
+}
+.cssCard .cssImg {
+    width: 90%;
+    height: 50%;
+    padding: 5px;
+    margin: 8px auto;
+    background: #fff !important;
+    border-radius: 6px;
+}
+
+.cssImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.cssCard .cssHeaderCard {
+    padding: 5px;
+    position: relative;
+    top: -20px;
+}
+.cssCard .cssTitleCrd {
+    color: #333 !important;
+    font-size: 15px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cssPrix {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+}
+.cssPrixInitial {
+    margin: 8px 0px 6px 0px;
+    font-size: 8px;
+    color: #444;
+}
+.cssPrixInitial span {
+    font-size: 22px;
+}
+.cssPrixFinal {
+    margin-top: 10px;
+    margin-right: 4px;
+    font-size: 8px;
+    color: #666;
+}
+.cssPrixFinal span {
+    font-size: 15px;
+    text-decoration: line-through;
+}
+
+.cssPromotion {
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+    position: relative;
+    top: -34px;
+    left: -14px;
+    background: #ff4747;
+    color: #fff;
+    text-align: center;
+}
+.cssBtnDetail {
+    width: 90% !important;
+    margin: 5px auto !important;
+    margin-top: 2px !important;
+}
+ion-button {
+    width: 100% !important;
+    --color: #fff;
+    font-size: 15px !important;
+    --background: #ff4747 !important;
+    border-radius: 6px !important;
+}
+
+@media only screen and (max-width: 362px) {
+    .cssQuantity {
+        height: 32px !important;
+        border-radius: 4px;
+        margin: 10px 0px !important;
+    }
+    .cssQuantity .cssAddMinus {
+        font-size: 17px;
+        text-align: center;
+        padding: 7px 0px;
+        cursor: pointer;
+    }
+    .cssQuantity .cssQty {
+        font-size: 18px;
+    }
+    .cssQuantity .cssQty span {
+        font-size: 26px;
+    }
+    .cssCard {
+        height: 300px !important;
+    }
+
+    .cssCard .cssHeaderCard {
+        position: relative;
+        top: -26px;
+    }
+    .cssCard .cssTitleCrd {
+        font-size: 13px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .cssPrixInitial {
+        margin: 6px 0px;
+        font-size: 8px;
+    }
+    .cssPrixInitial span {
+        font-size: 18px;
+    }
+    .cssPrixFinal {
+        margin-top: 10px;
+        font-size: 8px;
+    }
+    .cssPrixFinal span {
+        font-size: 13px;
+    }
+
+    .cssPromotion {
+        width: 46px;
+        height: 18px;
+        border-radius: 9px;
+        position: relative;
+        top: -32px;
+        left: -14px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    ion-button {
+        font-size: 13px !important;
+    }
+}
+
+
+.grey_back{
+    background: #c0bebe !important;
+}
+.grey{
+    background: #ff4747 !important;
+}
+
+ion-input {
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  input{
+    padding: 0;
+  }

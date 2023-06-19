@@ -1,0 +1,63 @@
+.cssTHead{
+    background: #22577A;
+    color: #fff;
+    height: 50px;
+    width: 96%;
+    margin: 12px auto 10px auto;
+    border-radius: 6px;
+}
+.cssTHead .cssLibel{
+    font-size: 17px;
+}
+.cssTHead .cssCenter{
+    margin-top: 14px;
+    text-align: center !important;
+}
+.cssHeight{
+    width: 100%;
+    height: calc(100% - 190px) !important;
+    position: fixed;
+    top: 120px !important;
+    overflow-y: scroll;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+.cssHeight .cssTHead{
+    background: #d2edff;
+}
+.cssHeight .cssValue{
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+.cssHeight .cssPoints{
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #22577A !important;
+}
+.cssFooter{
+    width: 96%;
+    margin: 0px auto;
+    position: absolute;
+    bottom: 15px; right: 15px;
+    color: #444;
+}
+.cssFooter .cssValue:first-child{
+    font-size: 28px;
+    text-align: center;
+}
+.cssFooter .cssValue:last-child{
+    font-size: 14px;
+    text-align: center;
+    color: #22577A;
+}
+.cssFooter .cssValue:last-child span{
+    font-size: 28px;
+    margin-left: 10px;
+}
+@media only screen and (max-width: 362px) {
+    .cssTHead .cssLibel{
+        font-size: 15px;
+        font-weight: 500;
+    }
+}

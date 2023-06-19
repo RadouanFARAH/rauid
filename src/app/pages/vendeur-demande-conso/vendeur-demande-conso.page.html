@@ -1,0 +1,217 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      بطاقة العميل
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="cssCard1">
+          <div class="cssTitleCard">
+            <span class="tajawal-Bold">معلومات حول العميل</span>
+          </div>
+          <div class="cssTitleCard" (click)="goToUpdateUser()">
+            <span class="tajawal-Bold">
+              تحرير
+              <ion-icon
+              name="pencil-sharp"
+              style="position: relative; top: 4px"
+            ></ion-icon>
+
+            </span>
+          </div>
+          <div class="cssContentCard">
+                        <div>
+              <span class="cssLibel tajawal-Bold">إسم العميل :</span>
+              <span class="cssValue tajawal-Medium">{{data1.nom}}</span>
+            </div>
+            <div>
+              <span class="cssLibel tajawal-Bold">نوع المتجر  :</span>
+              <span class="cssValue tajawal-Medium">{{data1.typeStore}}</span>
+            </div>
+            <div>
+              <span class="cssLibel tajawal-Bold">إسم المتجر  :</span>
+              <span class="cssValue tajawal-Medium">{{data1.nameStore}}</span>
+            </div>
+            <div>
+              <span class="cssLibel tajawal-Bold">رمز العميل :</span>
+              <span class="cssValue tajawal-Medium">{{data1.id}}</span>
+            </div>
+            
+            <div>
+              <span class="cssLibel tajawal-Bold">الحي :</span>
+              <span class="cssValue tajawal-Medium">{{data1.quartier}}</span>
+            </div>
+            <div>
+              <span class="cssLibel tajawal-Bold">العنوان :</span>
+              <span class="cssValue tajawal-Medium">{{data1.adresse}}</span>
+            </div>
+            <div *ngIf="data1.email !== ''">
+              <span class="cssLibel tajawal-Bold">البريد الإلكتروني :</span>
+              <span class="cssValue tajawal-Medium">{{data1.email}}</span>
+            </div>
+
+                        <div class="cssNum cssNum2">
+              <ion-button color="primary" (click)="call(data1.numPhone)" class="tajawal-Boldd cssBtn">
+                تواصل عبر الهاتف
+                <img src="../../../assets/images/vendeurConsoDtail/phone1.png" alt="error">
+              </ion-button>
+
+              <ion-button color="success" [href]="'whatsapp://send?phone=212'+data1.numWhatsapp"
+                class="tajawal-Boldd cssBtnWhats cssBtn">
+                تواصل عبر الواتساب
+                <img src="../../../assets/images/vendeurConsoDtail/whatsapp1.png" alt="error">
+              </ion-button>
+            </div>
+
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+
+    <ion-row style="place-content: center;" *ngIf="d.etatDemande !== 'V'">
+      <ion-button class="tajawal-Boldd cssBtn4" (click)="goTo(d.id)">تمرير الطلبية
+      </ion-button>
+      <ion-button (click)="openRejectConsumerModal(d.id)" class="tajawal-Boldd cssBtn5">رفض الطلبية</ion-button>
+
+      <ion-button class="tajawal-Boldd cssBtn6 cssBtn5" [routerLink]="['/consommateur-demandehistorique', {id:d.id}]">حصيلة
+        الطلبيات السابقة
+      </ion-button>
+    </ion-row>
+
+    <div *ngIf="d.etatDemande === 'V'">
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssCard2">
+            <div class="cssTitleCard">
+              <span class="tajawal-Bold">معلومات حول الطلبية</span>
+            </div>
+            <div class="cssContentCard">
+              <div>
+                <span class="cssDate">{{data2.date | date: "dd/MM/yyyy HH:mm"}}</span>
+              </div>
+              <div class="cssCard2Infos">
+                <div>
+                  <p class="cssLibel tajawal-Medium">رقم الطلبية</p>
+                  <p class="cssValue">{{data2.id}}</p>
+                </div>
+                <div>
+                  <p class="cssLibel tajawal-Medium">المبلغ بالدرهم</p>
+                  <p class="cssValue">{{data2.prix}}</p>
+                </div>
+                <div>
+                  <p class="cssLibel tajawal-Medium">القيمة بالنقط</p>
+                  <p class="cssValue">{{data2.note}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="d.etatDemande === 'V'">
+        <ion-col class="ion-no-padding">
+          <div class="cssBtns">
+            <ion-button class="tajawal-Boldd cssBtn2"
+              [routerLink]="['/vendeur-demandedetail',{code:d.codecommande, link}]">تفاصيل الطلبية</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssBtns">
+            <ion-button class="tajawal-Boldd cssBtn3" [routerLink]="['/consommateur-demandehistorique', {id:d.id}]">
+              حصيلة الطلبيات السابقة
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </div>
+    <div style="display: grid;margin:10px 20px">
+      <ion-textarea [(ngModel)]="feedback" class="custom-textarea" placeholder="أكتب ملاحظاتك هنا"></ion-textarea>
+      <ion-button [disabled]="!feedback" (click)="insertFeedback()" color="primary">إرسال</ion-button>
+      <div class="cssTitleCard fitcontent">
+        <span class="tajawal-Bold">ملاحظات على العميل</span>
+      </div>
+      <ion-list>
+                  <div *ngIf="feedbacks.length == 0">
+            <p>لا توجد ملاحظات</p>
+          </div>
+                      <ion-item *ngFor="let feedback of feedbacks">
+              <ion-thumbnail slot="start">
+                <img alt="profile" src="../../../assets/images/register/man3.png" />
+              </ion-thumbnail>
+              <ion-label><span class="cssLibel tajawal-Bold">{{feedback.giver_id}}:</span> {{feedback.feedback_text}}</ion-label>
+            </ion-item>
+                        </ion-list>
+    </div>
+
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="cssCard1 cssCard111">
+          <div class="cssTitleCard">
+            <span class="tajawal-Bold">موقع العميل على الخريطة :</span>
+          </div>
+          <div class="cssContentCard2" (click)="navigate()">
+            <div
+              style="width: 100%; height: 200px"
+            >
+              <img
+                src="../../../assets/images/maps.png"
+                style="width: 100%; height: 200px"
+                alt="photo"
+                srcset=""
+              />
+            </div>
+            <div
+              style="
+                background: rgb(255, 255, 255/0%);
+                width: 100%;
+                height: 200px;
+                display: flex;
+                position: relative;
+                top: -204px;
+              "
+            >
+              <a
+                
+                style="
+                  margin: 0 auto;
+                  position: relative;
+                  top: 50%;
+                  transform: translateY(-10%);
+                "
+              >
+                <img src="../../../assets/icon/placeholder.png" alt="photo"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

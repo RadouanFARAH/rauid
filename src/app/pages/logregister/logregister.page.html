@@ -1,0 +1,250 @@
+<ion-content class="bgInterface1">
+
+
+    <ion-grid>
+        <br>
+    <br>
+    <ion-row *ngIf="!updateData">
+      <ion-col class="ion-no-padding">
+        <p class="cssTitle tajawal-Medium">ملء إستمارة التسجيل</p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="updateData">
+      <ion-col class="ion-no-padding">
+        <p class="cssTitle tajawal-Medium">تحرير إستمارة التسجيل</p>
+      </ion-col>
+    </ion-row>
+
+    <form class="cssForm" [formGroup]="data">
+
+      
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الإسم الكامل</ion-label>
+            <ion-input placeholder="الإسم الشخصي و العائلي" formControlName="nomprenom" type="text"
+              class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">المدينة</ion-label>
+            <ion-input *ngIf="!beingRegistred" [disabled]="villeDisabled" formControlName="ville" type="text"
+              class="cssInput tajawal-Medium">
+            </ion-input>
+            <ion-select placeholder="إختر المدينة" (ionChange)="getQuartiers()" *ngIf="beingRegistred"
+              formControlName="ville" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let v of villes" [value]="v.name">{{v.name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الحي</ion-label>
+            <ion-select placeholder="إختر الحي" formControlName="adresselogement" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let quartier of quartiers" [value]="quartier.id">{{quartier.name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">العنوان</ion-label>
+            <ion-input placeholder="ادخل الزنقة ورقم السكن" formControlName="adresseentreprise" type="text"
+              class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">رقم الهاتف المحمول</ion-label>
+            <ion-input (keypress)="preventCaracters($event)"
+              placeholder="&#8226;&#8226;  &#8226;&#8226;  &#8226;&#8226;  &#8226;&#8226; 06" formControlName="tel"
+              type="text" class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">رقم الهاتف الواتساب</ion-label>
+            <ion-input (keypress)="preventCaracters($event)"
+              placeholder="&#8226;&#8226;  &#8226;&#8226;  &#8226;&#8226;  &#8226;&#8226; 06" formControlName="whatsapp"
+              type="text" class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الحساب الالكتروني</ion-label>
+            <ion-input placeholder="إدخال البريد الإلكتروني" formControlName="email" type="email"
+              class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!updateData || (updateData && updateData.role==='V')">
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">إسم المتجر</ion-label>
+            <ion-input placeholder="إدخال إسم المتجر" formControlName="nameStore" type="nameStore"
+              class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!updateData || (updateData && updateData.role==='V')">
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">نوع المتجر</ion-label>
+            <ion-input placeholder="إدخال نوع المتجر" formControlName="typeStore" type="typeStore"
+              class="cssInput tajawal-Medium">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="!updateData">
+        <label class="fileLabel cssLabel tajawal-Bold"> صورة جانبية
+          <input id="file_input" type="file" (change)="onChange($event)" accept=".jpg, .jpeg, .png" class="file">
+          <div class="cssImgages">
+            <div class="cssbtnImg">
+              <img *ngIf="imageURL" [src]="imageURL">
+              <span *ngIf="!imageURL">
+                <fa-icon style="color: #f0344c;" icon="camera"></fa-icon>
+              </span>
+            </div>
+          </div>
+        </label>
+
+        <ion-row *ngIf="!beingRegistred">
+          <ion-col class="ion-no-padding">
+            <div class="cssToRight">
+              <ion-label class="cssLabel tajawal-Medium">أدخل الرمز السري</ion-label>
+              <ion-input formControlName="password"
+                placeholder="&#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226;" type="password"
+                class="cssInput tajawal-Medium">
+              </ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-row *ngIf="!updateData">
+        <ion-col class="ion-no-padding">
+          <div style="margin-top: 16px;">
+            <ion-button expand="block" class="tajawal-Bold cssBtn color1" (click)="register()"
+              [disabled]="data.invalid">تسجيل <ion-spinner style="color:red; margin-right: 10px;" *ngIf="spinner">
+              </ion-spinner>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="updateData">
+        <ion-col class="ion-no-padding">
+          <div style="margin-top: 16px;">
+            <div style="display: inline-grid;">
+              <ion-label class="cssLabel tajawal-Medium">إعادة تسجيل موقعه في الخريطة؟</ion-label>
+              <ion-toggle [checked]="wantedToUpdateCoordinates" (ionChange)="toggelwantedToUpdateCoordinates()">
+              </ion-toggle>
+            </div>
+
+            <ion-button expand="block" class="tajawal-Bold cssBtn color1" (click)="updateUser()">تحرير <ion-spinner
+                style="color:red; margin-right: 10px;" *ngIf="spinner">
+              </ion-spinner>
+            </ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div style="margin-top: 16px;margin-bottom: 16px;">
+            <ion-button expand="block" class="tajawal-Bold cssBtn color1" (click)="goBack()">رجوع
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </form>
+
+  </ion-grid>
+
+    <div class="alerte" *ngIf="showSuccessAlerte">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/successAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p class="message_content tajawal-Medium">
+          عملية التسجيل تمت بنجاح.
+          يمكنك الدخول للتطبيق برقم الهاتف أو البريد الإلكتروني مع الرقم السري.
+        </p>
+        <div class="message_btn">
+          <button (click)="dimissLoginAlert()" class="tajawal-Medium">رجوع</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alerte" *ngIf="showErrorAlerte">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/errorAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p id="koho" class="message_content tajawal-Medium">
+          {{message}}
+        </p>
+              </div>
+    </div>
+  </div>
+
+  <div class="alerte" *ngIf="showSuccessAlerte2">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/successAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p class="message_content tajawal-Medium">
+          عملية تسجيل العميل قد تمت بنجاح، المرجو التحقق مع العميل من توصله بالرمز السري عبر الواتساب
+        </p>
+        <div class="cssNum cssNum2">
+          <ion-button color="success" [href]="href" class="tajawal-Boldd cssBtnWhats cssBtn">
+            ارسال
+            <img width="32px" src="../../../assets/images/vendeurConsoDtail/whatsapp1.png" alt="error">
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

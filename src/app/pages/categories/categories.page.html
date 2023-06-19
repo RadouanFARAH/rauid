@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-buttons slot="end">
+      <ion-menu-button menu="consommateur-menu" style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span id="btnheader" class="cssBtnHeader" [routerLink]="['/my-cart']">
+        <fa-icon icon="shopping-basket"></fa-icon>
+        <ion-badge *ngIf="commandeNum > 0">{{commandeNum}}</ion-badge>
+      </span>
+          </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+
+    <div class="cssSlider">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide [routerLink]="['/slide', {id: article.id, title:article.title, img:article.img, text:article.text}]" *ngFor="let article of articles" [style.background-image]="'url('+ url+'/images/image_cat'+article.id+'.png' +')'">
+                        </ion-slide>
+    </ion-slides>
+  </div>
+
+  <ion-grid class="cssContainer">
+
+    <ion-row style="margin-bottom: 4px !important;">
+      <ion-col size="12" class="ion-no-padding">
+        <div class="cssOffre">
+          <div class="cssContentOffre">
+            <div class="cssTitle tajawal-Medium">شراء المشترك المنظم</div>
+            <div class="cssExpired tajawal-Medium" *ngIf="!stillOffred">لم يعد متاح اليوم</div>
+            <div class="cssClock" *ngIf="stillOffred">
+              <div>
+                <div class="cssLibel tajawal-Medium">الوقت المتبقي</div>
+              </div>
+              <div>
+                <div class="cssValue">{{seconds}}</div>
+                <div class="cssLibel">ثواني</div>
+              </div>
+              <div>
+                <div class="cssValue">{{minutes}}</div>
+                <div class="cssLibel">دقائق</div>
+              </div>
+              <div>
+                <div class="cssValue">{{hours}}</div>
+                <div class="cssLibel">ساعات</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+        <ion-row >
+      <ion-col size="12" class="ion-no-padding">
+        <div class="cssSlider2">
+          <ion-slides pager="true" [options]="slideOpts2" #mySlider2>
+            <ion-slide [routerLink]="['/products', {id: 'special', nom:'عروض اليوم', special:true}]"
+              *ngFor="let p of specialorders"
+              [style.background-image]="'url('+ url+'/images/image_'+p.code+'.png' +')'">
+                          </ion-slide>
+          </ion-slides>
+
+                  </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-bottom: 4px !important;">
+      <ion-col size="12" class="ion-no-padding">
+        <div class="cssOffre2">
+          <div class="cssContentOffre">
+            <div class="cssExpired tajawal-Boldd">فئات متنوعة</div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin: 20px 10px !important;">
+      <ion-col size="6" *ngFor="let cat of categories">
+        <ion-card class="cssCard" [routerLink]="['/products', {id: cat.id, nom:cat.nom}]">
+          <img class="cssImg" [src]="cat.url" height="160" width="150">
+          <ion-card-header class="cssHeaderCard" style="padding: 5px;">
+            <ion-card-title class="cssTitleCrd " style="font-size: 16px;">{{cat.nom}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+
+
+ 

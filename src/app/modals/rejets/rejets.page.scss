@@ -1,0 +1,28 @@
+.btnBack{
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+}
+
+.cssItem{
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+}
+.cssBtn{
+    width: 96%;
+    height: 50px;
+    margin: 0px auto;
+    margin-top: 16px;
+}
+ion-button{
+    width: 100%; height: 100%;
+    padding: 0px 2px;
+    font-size: 17px;
+    --border-radius: 4px !important;
+    --background: #E50914 !important;
+}
+
+@media only screen and (max-width: 362px) {
+
+}

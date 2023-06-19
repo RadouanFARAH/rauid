@@ -1,0 +1,190 @@
+.cssHeight{
+    width: 96%;
+    margin: 0px auto;
+}
+
+.cssContainer{
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);   
+    border-radius: 8px;
+}
+
+.cssSticky{
+    width: 100%;
+    padding-bottom: 10px;
+    position: sticky;
+    top: 0px;
+    background: #fafafa;
+    z-index: 100000;
+}
+.cssNbrTotal{
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 7px 0px;
+    background: #f1f2f6;
+    color: #444;
+    text-align: center;
+}
+.cssNbrTotal .cssLibel{
+    font-size: 17px;
+    margin-left: 8px;
+}
+.cssNbrTotal .cssValue{
+    font-size: 22px;
+    font-weight: 600;
+}
+.cssSelect{
+    height: 50px;
+    padding: 7px !important;
+    background: #FF6767;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cssSelect ion-select{
+    width: 85% !important;
+}
+.cssZone{
+    height: 64px;
+    margin-top: 10px;
+    padding: 10px 7px;
+    background: #F7941D;
+    color: #fff;
+    text-align: center;
+}
+.cssZone .cssLibel{
+    display: block;
+    font-size: 17px;
+}
+.cssZone .cssValue{
+    display: block;
+    font-size: 15px;
+    margin-left: 8px;
+}
+
+
+.cssNbrConsomateur{
+    height: 64px;
+    margin-top: 10px;
+    padding: 7px;
+    background: #10bb88;
+    color: #fff;
+    text-align: center;
+}
+.cssNbrConsomateur .cssLibel{
+    display: block;
+    font-size: 17px;
+    margin-left: 8px;
+}
+.cssNbrConsomateur .cssValue{
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+}
+.cssSmallCard{
+    height: 54px;
+    border-radius: 4px;
+    margin-top: 10px; 
+    padding: 6px;
+    background: #f1f2f6;
+    color: #444;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cssSmallCard .cssLibel{
+    font-size: 14px;
+    margin-left: 8px;
+}
+.cssSmallCard .cssValue1{
+    font-size: 16px;
+    font-weight: 600;
+}
+.cssSmallCard .cssValue2{
+    font-size: 14px;
+}
+.cssdate .cssLibel{
+    font-size: 14px;
+}
+.cssdate .cssValue{
+    font-size: 17px !important;
+}
+
+@media only screen and (max-width: 362px) {
+    .cssContainer{ 
+        border-radius: 4px;
+    }
+    .cssNbrTotal{
+        height: 40px;
+        margin-top: 14px;
+    }
+    .cssNbrTotal .cssLibel{
+        font-size: 14px;
+        position: relative;
+        top: -3px;
+    }
+    .cssNbrTotal .cssValue{
+        font-size: 19px;
+        position: relative;
+        top: -2px;
+    }
+    .cssSelect{
+        height: 40px;
+        padding: 7px !important;
+    }
+    .cssSelect ion-select{
+        width: 80% !important;
+    }
+    .cssSelect .cssLibel{
+        font-size: 14px;
+    }
+    .cssZone{
+        height: 54px;
+        padding: 6px;
+    }
+    .cssZone .cssLibel{
+        display: block;
+        font-size: 14px !important;
+    }
+    .cssZone .cssValue{
+        font-size: 13px;
+    }
+
+    .cssNbrConsomateur{
+        height: 54px;
+        padding: 6px;
+    }
+    .cssNbrConsomateur .cssLibel{
+        font-size: 14px;
+        margin-left: 0px !important;
+    }
+    .cssNbrConsomateur .cssValue{
+        font-size: 18px;
+    }
+    .cssSmallCard{
+        height: 45px;
+    }
+    .cssSmallCard .cssLibel{
+        font-size: 12px;
+    }
+    .cssSmallCard .cssValue1{
+        font-size: 14px;
+    }
+    .cssSmallCard .cssValue2{
+        font-size: 13px;
+    }
+
+    .cssdate .cssLibel{
+        font-size: 11px;
+    }
+    .cssdate .cssValue{
+        font-size: 13px !important;
+    }
+}
+
+ion-radio{
+    --color: var(--ion-color-step-400, #676767);
+}

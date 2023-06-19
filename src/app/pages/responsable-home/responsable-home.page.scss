@@ -1,0 +1,479 @@
+.cssMenu{
+    width: 280px;
+    padding: 5px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    background-color: #F9E5DA;
+    position: fixed;
+    right: 6px; top: 55px;
+    z-index: 1000000;
+}
+ion-item {
+    --min-height: 20px;
+    --ion-item-background: #F9E5DA;
+}
+.cssMenu label{
+    font-size: 17px;
+    margin: 6px 0px;
+}
+
+
+.cssRole{
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    position: absolute;
+    right: 10px;
+}
+.cssContainer{
+    width: 100%;
+    margin: 10px auto;
+}
+.cssContainer .cssCardVendeur{
+    width: 94%;
+    margin: 6px auto;
+    padding: 6px;
+    background: #FEC260;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+.cssContainer .cssAvatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0px auto;
+}
+
+.cssContainer .cssAvatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+
+.cssContainer .cssInfos{
+    margin: 8px 4px;
+}
+.cssContainer .cssName{
+    margin-top: 12px;
+    font-size: 12px !important;
+    font-weight: 700;
+    color: #4C453F;
+    text-align: center;
+}
+.cssContainer .cssZone{
+    margin-top: 6px;
+    font-size: 16px !important;
+    color: #555;
+    text-align: center;
+}
+.cssCard3{
+    margin: 0px 10px;
+    padding: 10px 0px;
+    background: #FEC260;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    margin-bottom: 14px;
+}
+.cssCard3 .cssFlex{
+    display: flex;
+    justify-content: space-evenly;
+}
+.cssCard3 .cssFlex div{
+    margin: 0px 6px 8px 6px;
+    color: #fff;
+}
+.cssCard3 .cssFlex div p{
+    margin: 10px 0px;
+}
+
+.cssFlex .cssLibel{
+    font-size: 14px;
+    text-align: center;
+}
+.cssFlex .cssValue{
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.cssFlex .cssSmallCard3{
+    width: 100%;
+    background: #E50914;
+}
+.cssFlex .cssSmallCard4{
+    width: 100%;
+    background: #F7941D;
+}
+.cssFlex .cssSmallCard5{
+    width: 100%;
+    background: #00A651;
+}
+.cssFlex .cssSmallCard3, 
+.cssFlex .cssSmallCard4, 
+.cssFlex .cssSmallCard5{
+    padding: 0px 6px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.cssFlex .cssSmallCard3 .cssLibel, 
+.cssFlex .cssSmallCard4 .cssLibel, 
+.cssFlex .cssSmallCard5 .cssLibel{
+    font-size: 10px;
+    text-align: center;
+}
+.cssSmallCard6{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F9E5DA;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    margin: 6px 10px; 
+    padding: 6px;
+    height: 50px;
+}
+.cssName{
+    font-size: 12px;
+    color: #333;
+}
+.cssName .cssBgIcon1,
+.cssName .cssBgIcon2,
+.cssName .cssBgIcon3{
+    display: inline-block;
+    height: 30px; width: 30px !important;
+    border-radius: 50%;
+    margin-left: 8px;
+    color: #fff;
+    font-size: 16px;
+}
+.cssName .cssBgIcon1{
+    background: #E50914;
+}
+.cssName .cssBgIcon2{
+    background: #F7941D;
+}
+.cssName .cssBgIcon3{
+    background: #00A651;
+}
+.cssName fa-icon{
+    margin: 0px 9px 0px 6px;
+    position: relative;
+    top: 5px;
+}
+
+.cssName .cssNameValue{
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    top: 3px;
+}
+.cssNote, .cssPrix{
+    position: relative;
+    top: -1px;
+    color: #333;
+}
+.cssNote .cssUnit, .cssPrix .cssUnit{
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.cssMsg .cssRefuse{ 
+    font-size: 16px; 
+    color: #E50914;
+    padding-left: 10px;
+}
+
+.cssNote .cssValue, .cssPrix .cssValue{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 3px;
+}
+.cssBtn{
+    text-align: left;
+}
+ion-button{
+    margin: 3px !important;
+    --color: #ffffff;
+    font-size: 13px;
+    border-radius: 10px;
+}
+.cssBtn ion-button:first-child{
+    --background: #00C1D4 !important;
+}
+.cssBtn ion-button:last-child{
+    --background: #FF2442 !important;
+}
+.cssResponsable{
+    margin: 15px 10px;
+}
+.cssResponsable .cssCol{
+    width: 96%; height: 50px;
+    padding-top: 12px;
+    padding-right: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    border-radius: 4px;
+}
+.cssResponsable .cssCol:first-child{margin: 5px 5px 0px 0px;}
+.cssResponsable .cssCol:last-child{margin: 5px 3px 0px 0px;}
+.cssResponsable .cssBackground1{background: #FF7848; color: #fff;}
+.cssResponsable .cssBackground2{background: #22B8B8; color: #fff;}
+
+.cssResponsable .cssSelect{
+    width: 98%; height: 50px;
+    padding: 0px 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: #ffc1a2;
+}
+.cssResponsable .cssMarging{
+    padding-top: 12px;
+    padding-right: 10px;
+    background: #b5a0ff;
+}
+.cssResponsable .cssSelect select{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.cssResponsable .cssLibel{
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.cssResponsable .cssNumber{
+    font-size: 18px;
+}
+
+
+@media only screen and (max-width: 362px) {
+    .cssMenu{
+        width: 60%;
+        padding: 5px;
+        padding-bottom: 10px;
+        border-radius: 4px;
+    }
+    ion-item {
+        --min-height: 18px;
+    }
+    .cssMenu label{
+        font-size: 14px;
+        margin: 5px 0px;
+    }
+    .cssResponsable{
+        margin: 10px;
+    }
+    .cssResponsable .cssLibel{
+        font-size: 12px;
+    }
+    .cssResponsable .cssNumber{
+        font-size: 17px;
+        margin-right: 10px;
+    }
+    .cssResponsable .cssValue{
+        font-size: 13px !important;
+    }
+    .cssContainer .cssCardVendeur{
+        padding: 4px;
+        border-radius: 4px;
+    }
+    .cssContainer .cssAvatar{
+        width: 100px; height: 100px;
+    }
+
+    .cssContainer .cssInfos{
+        margin: 6px 2px;
+    }
+    .cssContainer .cssName{
+        margin-top: 8px;
+        font-size: 12px !important;
+    }
+    .cssContainer .cssZone{
+        font-size: 12px !important;
+    }
+    .cssCard3{
+        padding: 6px 0px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+    }
+    .cssCard3 .cssFlex{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .cssCard3 .cssFlex div{
+        margin: 0px 4px 6px 4px;
+    }
+    .cssCard3 .cssFlex div p{
+        margin: 5px 0px;
+    }
+    .cssFlex .cssLibel{
+        font-size: 12px;
+    }
+    .cssFlex .cssValue{
+        font-size: 20px;
+        margin-top: 0px;
+    }
+    .cssFlex .cssSmallCard3, 
+    .cssFlex .cssSmallCard4, 
+    .cssFlex .cssSmallCard5{
+        padding: 0px 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .cssFlex .cssSmallCard3 .cssLibel, 
+    .cssFlex .cssSmallCard4 .cssLibel, 
+    .cssFlex .cssSmallCard5 .cssLibel{
+        font-size: 9px;
+        margin-bottom: 0px !important;
+    }
+    .cssFlex .cssSmallCard3 .cssValue, 
+    .cssFlex .cssSmallCard4 .cssValue, 
+    .cssFlex .cssSmallCard5 .cssValue{
+        margin-bottom: 0px !important;
+    }
+    .cssSmallCard6{
+        padding: 4px;
+        height: 50px;
+    }
+    .cssName{
+        font-size: 12px !important;
+    }
+    .cssName .cssBgIcon1,
+    .cssName .cssBgIcon2,
+    .cssName .cssBgIcon3{
+        display: inline-block;
+        height: 22px; width: 22px !important;
+        border-radius: 50%;
+        margin-left: 8px;
+        color: #fff;
+        text-align: center;
+    }
+    .cssName fa-icon{
+        font-size: 12px;
+        position: relative;
+        top: -1px; left: 4px;
+    }
+
+    .cssName .cssNameValue{
+        font-size: 12px !important;
+        font-weight: 600;
+        position: relative;
+        top: -3px;
+    }
+    .cssNote, .cssPrix{
+        position: relative;
+        top: -1px;
+        color: #333;
+    }
+    .cssNote .cssUnit, .cssPrix .cssUnit{
+        font-size: 11px;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+    .cssMsg .cssRefuse{ 
+        font-size: 13px;
+    }
+
+    .cssNote .cssValue, .cssPrix .cssValue{
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 3px;
+    }
+    .cssBtn{
+        text-align: left;
+    }
+    ion-button{
+        width: 40%;
+        padding: 0px 2px;
+        font-size: 11px;
+    }
+}
+
+
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: -100%;
+    transform: translate(-20px, 20px);
+    opacity: 0.7;
+}
+
+.container{
+    position: relative;
+}
+.container::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+.container ion-card-content,
+.container ion-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+@media only screen and (max-width: 590px) {
+    ._font {
+        font-size: 14px;
+    }
+    .font {
+        font-size: 16px;
+    }
+    .lineHeight {
+        line-height: 15px;
+    }
+    .height {
+        height: 188px;
+    }
+    .width {
+        width: 170px;
+    }
+    .imageSize{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media only screen and (min-width: 590px) {
+    .font {
+        font-size: 1.6em;
+    }
+    ._font {
+        font-size: 1.6em;
+    }
+    .lineHeight {
+        line-height: 25px;
+    }
+    .height {
+        height: 340px;
+    }
+    .width {
+        width: 95%;
+    }
+    .imageSize{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+

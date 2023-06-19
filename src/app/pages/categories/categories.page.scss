@@ -1,0 +1,324 @@
+.cssContainer{
+    width: 96%;
+    --margin: 0px auto !important;
+}
+
+.bgheader ion-title{
+    padding-left: 0px;
+}
+.cssSlider ion-slides{
+    width: 94%;
+    height: 150px;
+    margin: 0px auto;
+    margin-top: 12px;
+    border-radius: 10px;
+}
+.cssSlider ion-slide{
+    width: 100%;
+    background-size: 98% 98%;
+    background-repeat: no-repeat; 
+    background-position: center center; 
+}
+.cssSlider2{
+    background: #ffffff;
+}
+.cssSlider2 ion-slides{
+    width: 100%;
+    height: 300px;
+    margin: 0px auto;
+    border-radius: 0px 0px 10px 10px;
+}
+.cssSlider2 ion-slide{
+    width: 100%;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+}
+
+.cheveronRight, .cheveronLeft{
+    display: block;
+    width: 40px; height: 40px;
+    position: absolute;
+    top: 40%; 
+    text-align: center !important;
+}
+.cheveronRight{
+    right: 0%;
+}
+.cheveronLeft{
+    left: 0%;
+}
+.cheveronRight fa-icon, .cheveronLeft fa-icon{
+    color: #fff;
+    font-size: 30px;
+}
+.cssBigCard{
+    width: 100% !important;
+    margin: 0px auto;
+    margin-top: 6px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+.cssIcon1{
+    font-size: 24px;
+}
+.cssCard{
+    width: 98% !important;
+    height: 200px !important;
+    margin: 0px auto;
+    margin-top: 6px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.cssOffre{
+    width: 100%; height: 86px;
+    margin-top: 14px !important;
+    display: block;
+    margin: 0px auto;
+    background-image: url('./../../../assets/images/category/offre.png');
+    background-size: cover;
+    background-position: center center; 
+    background-repeat: no-repeat;
+    border-radius: 8px 8px 0px 0px;
+}
+.cssOffre2{
+    width: 100%; height: 86px;
+    margin-top: 17px !important;
+    display: block;
+    margin: 0px auto;
+    background-image: url('./../../../assets/images/category/offre2.png');
+    background-size: cover;
+    background-position: center center; 
+    background-repeat: no-repeat;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.cssContentOffre{
+    width: 60%;
+    position: relative;
+    left: -30%; top: 2%;
+}
+.cssContentOffre .cssTitle{
+    margin-top: 2px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+}
+.cssExpired{
+    position: relative;
+    top: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+}
+
+.cssOffre2 .cssExpired{
+    position: relative;
+    top: 10px;
+    font-size: 22px;
+    text-align: center;
+    color: #181D31;
+}
+.cssClock{
+    width: 100%;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cssClock .cssLibel{
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
+.cssClock .cssValue{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+.cssMenu .cssIconMenu{
+    margin-left: 16px;
+}
+.cssMenu .cssIconMenu fa-icon{
+    font-size: 24px;
+    color: #555;
+}
+.cssMenu .cssItemMenu{
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+}
+
+.cssVersion{
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    margin-right: 70px;
+}
+.cssVersion img{
+    width: 140px;
+    height: auto;
+}
+.cssVersion .cssV{
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF2442;
+}
+.bgColorProfi{ 
+    background-color: #FF2442;
+}
+.bgColorProfi .profil{
+    display: flex;
+    align-items: center;
+    height: 160px;
+    padding: 10px 20px 15px 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.bgColorProfi .profil ion-avatar{
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+}
+.bgColorProfi .profil img{
+    width: 100%;
+    height: 100%;
+} 
+  
+.bgColorProfi .detail{
+    margin: 0px 6px;
+    color: #fff;
+}
+.bgColorProfi .detail div{
+    margin-bottom: 8px;
+    font-size: 18px; 
+}
+.bgColorProfi .profil h4{
+    margin: 0px;
+    font-size: 16px;
+    color: rgb(255, 200, 200);
+}
+@media only screen and (max-width: 362px) {
+    .cssSlider ion-slides{
+        height: 150px;
+    }
+    .cssSlider ion-slide{
+        width: 96%;
+    }
+    .cssClock .cssValue{
+        font-size: 18px;
+    }
+    .cssBigCard{
+        border-radius: 4px !important;
+    }
+    .cssIcon1{
+        font-size: 17px;
+    }
+    .cssBigCard .cssHeaderCard{
+        padding: 2px !important;
+    }
+    .cssBigCard .cssTitleCrd{
+        height: 32px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .cssSlider2 ion-slides{
+        height: 220px;
+    }
+    .cssCard{
+        height: 150px !important;
+        --border-radius: 4px;
+    }
+    .cssCard .cssImg{
+        height: 110px;
+    }
+    .cssCard .cssHeaderCard{
+        padding: 2px !important;
+
+    }
+    .cssCard .cssTitleCrd{
+        font-size: 15px !important; 
+        height: 30px;
+    }
+    .cssMenu .cssIconMenu fa-icon{
+        font-size: 17px;
+    }
+    .cssMenu .cssItemMenu{
+        font-size: 15px;
+    }
+
+    .cssVersion{
+        margin-right: 70px;
+    }
+    .cssVersion img{
+        width: 100px;
+        height: auto;
+    }
+    .cssVersion .cssV{
+        font-size: 13px;
+    }
+
+    .bgColorProfi .profil ion-avatar{
+        width: 80px;
+        height: 80px;
+    }
+    .bgColorProfi .profil{
+        height: 130px;
+    }
+    .bgColorProfi .detail div{
+        font-size: 15px; 
+    }
+    .bgColorProfi .profil h4{
+        font-size: 14px;
+    }
+    .cssOffre{
+        height: 80px; 
+    }
+    
+    .cssContentOffre{
+        width: 64%;
+        position: relative;
+        left: -30%; top: 4%;
+    }
+    .cssContentOffre .cssTitle{
+        font-size: 16px;
+    }
+}
+.cssSlider2 ion-card {
+    width: 100%;
+    height: 160px;
+    box-shadow: none;
+    border-radius: 12px;
+    
+    img {
+        object-fit: cover;
+        width: 100%;
+        transform: scale(1.1, 1.1) rotate(1deg);
+        transition: 600ms all ease-in-out;
+    }
+}
+
+.swiper-slide-active {
+    transform: scale(1.05, 1.05);
+
+    ion-card {
+        img {
+            transform: scale(1, 1);
+        }
+    }
+}
+
+.swiper-slide {
+    transition: 400ms all ease-in-out;
+}
+
+#btnheader{
+    
+    right: 18px;
+    bottom: -26px;
+
+}

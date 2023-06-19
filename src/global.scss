@@ -1,0 +1,341 @@
+@import "~@ionic/angular/css/core.css";
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "~animate.css/animate.min.css";
+.bgInterface1 {
+    --ion-background-color: #E50914 !important;
+    background-color: #E50914;
+}
+
+.bgInterface2 {
+    --ion-background-color: #fefefe !important;
+}
+
+.bgheader {
+    --ion-background-color: #E50914 !important;
+}
+
+.color1 {
+    color: #E50914 !important;
+}
+.color2 {
+    color: #444 !important;
+}
+@font-face {
+    font-family: "Almarai-ExtraBold";
+    src: url("./assets/fonts/almarai/Almarai-ExtraBold.ttf");
+}
+.almarai-ExtraBold {
+    font-family: Almarai-ExtraBold;
+}
+
+@font-face {
+    font-family: "Almarai-Bold";
+    src: url("./assets/fonts/almarai/Almarai-Bold.ttf");
+}
+.almarai-bold {
+    font-family: Almarai-Bold;
+}
+
+@font-face {
+    font-family: "Almarai-Regular";
+    src: url("./assets/fonts/almarai/Almarai-Regular.ttf");
+}
+.almarai-Regular {
+    font-family: Almarai-Regular;
+}
+@font-face {
+    font-family: "Tajawal-Bold";
+    src: url("./assets/fonts/tajawal/Tajawal-ExtraBold.ttf");
+}
+.tajawal-Bold {
+    font-family: Tajawal-Bold;
+}
+
+@font-face {
+    font-family: "Tajawal-Boldd";
+    src: url("./assets/fonts/tajawal/Tajawal-Bold.ttf");
+}
+.tajawal-Boldd {
+    font-family: Tajawal-Boldd;
+}
+
+@font-face {
+    font-family: "Tajawal-Medium";
+    src: url("./assets/fonts/tajawal/Tajawal-Medium.ttf");
+}
+.tajawal-Medium {
+    font-family: Tajawal-Medium;
+}
+.cssHeader {
+    height: 55px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.cssHeader .cssTitleHead {
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+}
+.cssBtnHeader {
+    position: absolute;
+    right: 18px;
+    cursor: pointer;
+}
+.cssBtnHeaderLeft {
+    margin-top: 3px;
+    position: absolute;
+    left: 18px;
+    cursor: pointer;
+}
+ion-icon {
+    font-size: 26px;
+}
+ion-badge {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 10px !important;
+    font-weight: 500;
+    --background: #fff;
+    color: #E50914;
+    border-radius: 50%;
+    position: relative;
+    top: -8px;
+    left: 4px;
+    padding: 3px 0px !important;
+}
+
+.cssNumber {
+    font-size: 20px;
+}
+@media only screen and (max-width: 360px) {
+    .cssHeader .cssTitleHead {
+        font-size: 17px;
+    }
+    ion-icon {
+        font-size: 20px;
+    }
+}
+.my-custom-class {
+    --backdrop-opacity: 0.2;
+    font-family: Tajawal-boldd;
+    font-size: 10px;
+    --width: 100%;
+}
+
+.alerte {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.alerte .box2 {
+    width: 80%;
+    margin: 0px auto;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.alerte .box2 .successImg img {
+    width: 120px;
+    height: auto;
+}
+
+.alerte .box2 .message {
+    margin: 5px auto;
+}
+.alerte .box2 .message .message_content {
+    max-width: 500px;
+    margin: 0px auto;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    text-align: center;
+}
+.alerte .box2 .message .message_btn button {
+    width: 140px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #105e62;
+    padding: 8px auto;
+    margin-top: 16px;
+    border-radius: 4px;
+}
+.alerte .box2 .message .message_btn_Err button {
+    width: 140px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #e8505b;
+    padding: 8px auto;
+    margin-top: 16px;
+    border-radius: 4px;
+}
+
+.successtoastclass {
+    --color: #ffffff;
+    --border-radius: 30px 0px 30px 30px;
+    --background: #46df46;
+    --button-color: #ffffff;
+    --width: 60%;
+    font-size: large;
+    text-align: center;
+    font-family: "Tajawal-Bold";
+    font-weight: 700;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: var(--animate-duration);
+    animation-duration: var(--animate-duration);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: calc(1s * 0.75);
+    animation-duration: calc(1s * 0.75);
+    -webkit-animation-duration: calc(var(--animate-duration) * 0.75);
+    animation-duration: calc(var(--animate-duration) * 0.75);
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn;
+}
+.failedtoastclass {
+    --color: #ffffff;
+    --border-radius: 30px 0px 30px 30px;
+    --background: #E50914;
+    --button-color: #ffffff;
+    --width: 60%;
+    font-size: large;
+    text-align: center;
+    font-family: "Tajawal-Bold";
+    font-weight: 700;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: var(--animate-duration);
+    animation-duration: var(--animate-duration);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: calc(1s * 0.75);
+    animation-duration: calc(1s * 0.75);
+    -webkit-animation-duration: calc(var(--animate-duration) * 0.75);
+    animation-duration: calc(var(--animate-duration) * 0.75);
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn;
+}
+
+@-webkit-keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.threeDots {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grided_in_half{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+

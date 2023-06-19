@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      طلبياتي
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+    <div class="cssTHead">
+      <ion-row>
+        <ion-col size="3" class="cssCenter tajawal-Boldd cssLibel">تاريخ</ion-col>
+        <ion-col size="6" class="cssCenter tajawal-Boldd cssLibel">رقم الطلبية</ion-col>
+        <ion-col size="3" class="cssCenter tajawal-Boldd cssLibel">نقط</ion-col>
+      </ion-row>
+    </div>
+    <div class="cssHeight">
+      <ion-row *ngFor="let d of data" class="cssTHead" [style.background]="d.rejet == 0? '#BAFFB4' : '#FE7E6D'">
+        <ion-col size="3" class="ion-no-padding cssCenter cssValue">{{d.datecommande}}</ion-col>
+        <ion-col size="6" class="ion-no-padding cssCenter cssValue">{{d.codecommande}}</ion-col>
+        <ion-col size="3" class="ion-no-padding cssCenter cssValue cssPoints">{{d.rejet==0?d.pointtotal:''}}</ion-col>
+      </ion-row>
+    </div>
+
+    <div class="cssFooter">
+      <ion-row>
+        <ion-col size="6" class="tajawal-Boldd cssValue">المجموع</ion-col>
+        <ion-col size="6" class="tajawal-Boldd cssValue"><span>{{pointSomme}}</span>نقطة</ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

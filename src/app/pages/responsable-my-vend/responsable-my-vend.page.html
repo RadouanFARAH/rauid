@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" routerLink="/responsable-home">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      لائحة البائعين
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+        <div class="cssResponsable Tajawal-Medium">
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="nbrVendeur">{{this.data2.length}} بائعين</div>
+        </ion-col>
+
+        <ion-col class="ion-no-padding">
+          <div class="cssSelect">
+                        <ion-select
+              name="vendeur"
+              id="vendeur"
+              [(ngModel)]="d"
+              (ionChange)="vendeurChanged()"
+              placeholder="الأحياء"
+            >
+                            <ion-select-option *ngFor="let quartier of quartiers" [value]="quartier" class="cssValue tajawal-Medium">{{quartier}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div style="height: 26px"></div>
+                  <ion-row *ngFor="let d of data2">
+        <ion-col class="ion-no-padding">
+          <div class="cssList" (click)="showContact(d.id)">
+            <div class="cssImg">
+              <img
+                src="./../../../assets/images/register/user1_.png"
+                alt="error"
+              />
+            </div>
+
+            <div class="cssInfos">
+              <div class="roww">
+                <p class="tajawal-Bold">{{d.nomprenom}}</p>
+                <p>{{d.vquartier}}</p>
+              </div>
+
+              <div class="roww">
+                <p>رقم البائع <span> : {{d.id}} </span></p>
+                <p>عدد العملاء<span> : {{d.nbrClits}} </span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cssContact" *ngIf="d.showContactItem" >
+            <ion-button class="contact1" (click)="call(d.tel)">الهاتف</ion-button>
+                        <ion-button
+                color="success"
+                [href]="'whatsapp://send?phone=212'+d.whatsapp"
+                class="contact2"
+              >الواتساب</ion-button>
+                      </div>
+        </ion-col>
+      </ion-row>
+
+    </div>
+  </ion-grid>
+</ion-content>
+
+
+ 
+ <!-- <ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>   --> 

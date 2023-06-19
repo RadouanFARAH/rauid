@@ -1,0 +1,87 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-buttons slot="end">
+      <ion-menu-button menu="responsable-menu" style="color: #fff"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="tajawal-Bold cssTitleHead">
+            واجهة المسؤول
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="bubbles" refreshingText="rechargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="ion-no-padding">
+        <div class="cssResponsable">
+      <ng-container>
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssCol cssBackground1">
+              <span class="cssLibel almarai-ExtraBold">عدد البائعين :</span>
+              <span class="tajawal-Medium cssNumber">{{this.data2.length}}</span>
+            </div>
+          </ion-col>
+
+          <ion-col class="ion-no-padding">
+            <div class="cssCol cssBackground2">
+              <span class="cssLibel almarai-ExtraBold">اليوم :</span>
+              <span class="cssValue tajawal-Medium">{{data.jour}}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </div>
+
+        <div class="cssContainer">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let d of data2" class="ion-no-padding">
+            <div (click)="goToUpdateUser(d)" *ngIf="role==='D'" style=" width: fit-content;
+            height: fit-content;
+            margin: 0px auto;">
+              <img src="../../../assets/icon/edit.png" alt="">
+            </div>
+            <div class="height width" style=" background: #e4a94a;;
+            padding: 2px;
+            border-radius: 5px;
+            margin: 2px;
+            margin: 10px auto;
+            ">
+              <div style="display: grid; grid-template-columns: 50% 50%;">
+                <span class="_font" style="     font-family: 'Tajawal-Medium';">{{d.ville}}</span>
+                <span class="_font" style=" text-align: end; color: #325EF4;     font-family: 'Tajawal-Medium';">{{d.pointtotal}} نقطة</span>
+              </div>
+              <p style="text-align: center;margin: 0;">
+                <img (click)="goTo(d.id)" class="imageSize" style="
+                border-radius: 50%; " [src]="url+'/images/image_profile_image_'+d.id+'.png'"
+                  onerror="this.src='../../assets/images/register/user1.png';" />
+              </p>
+              <p class="font lineHeight" style="text-align: center; margin:5px; color: #325EF4; font-family: 'Tajawal-Bold';">
+                <span > {{d.nomprenom}} </span>
+              </p>
+              <p class="_font lineHeight" style="text-align: center; margin:5px; color: white;     font-family: 'Tajawal-Medium';">
+                <span>{{d.vquartier}}</span>
+              </p>
+              <p class="font lineHeight" style="text-align: center; margin:5px; color: #E50C47; font-family: 'Tajawal-Bold';">
+                <span>{{d.prixtotal}} درهم</span>
+              </p>
+              <p class="_font lineHeight" style="text-align: center;  margin:5px;  color: white;     font-family: 'Tajawal-Medium';">
+                <span>{{d.orders?.length}} فاتورة</span>
+              </p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </div>
+  </ion-grid>
+</ion-content>
+
+<!-- <ion-footer style="color:white">
+  <ion-toolbar color="dark" mode="ios">
+    <ion-title><a style="color:white; text-decoration:non;" class="tajawal-Boldd policy" routerLink="/policy">سياسة
+        الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer> -->

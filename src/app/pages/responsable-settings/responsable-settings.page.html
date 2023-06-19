@@ -1,0 +1,498 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-buttons slot="end">
+      <ion-menu-button menu="responsable-menu" style="color: #fff"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      تعديلات
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="bubbles" refreshingText="rechargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid class="ion-no-padding">
+    <div *ngIf="role=='D' ">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">
+          زيادة المدن والأحياء
+        </h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">المدينة</ion-label>
+            <ion-input type="text" class="cssInput" [(ngModel)]="selectedVille1"
+              class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding">
+          <form [formGroup]="form">
+            <h3>الأحياء</h3>
+            <div formArrayName="quartiers">
+              <div *ngFor="let _ of form.get('quartiers')['controls']; let i = index">
+                <div [formGroupName]="i">
+                  <ion-input class="cssInput tajawal-Medium" type="text" formControlName="quartier"></ion-input>
+                </div>
+              </div>
+            </div>
+            <ion-button (click)="addQuartier()">إضافة</ion-button>
+          </form>
+                  </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-button [disabled]="spinner6" expand="full" (click)="setVilleQuartier()"
+          class="cssLabel tajawal-Medium fullWidth">
+          إدراج
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner6"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+
+    <div *ngIf="role=='R'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">
+          تحديد اليوم والحي لكل بائع
+        </h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">البائع</ion-label>
+            <ion-select [(ngModel)]="selectedVendeur1" (ionChange)="vendeurChanged(selectedVendeur1.ville)"
+              class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let vendeur of vendeurs" [value]="vendeur">{{vendeur.nomprenom}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">اليوم</ion-label>
+            <ion-select multiple class="cssInput" [(ngModel)]="selectedDay" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let name of days; let day = index" [value]="day">{{name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الحي</ion-label>
+            <ion-select class="cssInput" [(ngModel)]="selectedQuartier" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let quartier of quartiers" [value]="quartier.id">{{quartier.name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-button [disabled]="spinner1" expand="full" (click)="setVendeurDayZone()"
+          class="cssLabel tajawal-Medium fullWidth">
+          إدراج
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner1"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+    <div *ngIf="!hasBoss">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">
+          تحديد اليوم والحي
+        </h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">اليوم</ion-label>
+            <ion-select multiple class="cssInput" [(ngModel)]="selectedDay" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let name of days; let day = index" [value]="day">{{name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الحي</ion-label>
+            <ion-select class="cssInput" [(ngModel)]="selectedQuartier" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let quartier of quartiers" [value]="quartier.id">{{quartier.name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-button [disabled]="spinner1" expand="full" (click)="setVendeurDayZone()"
+          class="cssLabel tajawal-Medium fullWidth">
+          إدراج
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner1"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+    <div *ngIf="role=='R'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">
+          تحديد هدف كل بائع في الشهر
+        </h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">البائع</ion-label>
+            <ion-select multiple [(ngModel)]="selectedVendeur2" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let vendeur of vendeurs" [value]="vendeur.id">{{vendeur.nomprenom}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">عدد الفاتورات
+            </ion-label>
+            <ion-input type="number" (keypress)="preventCaracters($event)" class="cssInput"
+              [(ngModel)]="selectedOrdersGoal" class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">عدد النقط </ion-label>
+            <ion-input type="number" (keypress)="preventCaracters($event)" class="cssInput"
+              [(ngModel)]="selectedPointsGoal" class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-button expand="full" (click)="setMonthGoal()" class="cssLabel tajawal-Medium fullWidth">
+          إدراج
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner2"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+
+    <div *ngIf="role=='D'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">تحديد مسؤول كل بائع</h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">المسؤول</ion-label>
+            <ion-select [(ngModel)]="selectedResponsable" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let responsable of responsables" [value]="responsable.id">
+                {{responsable.nomprenom}} ({{responsable.tel}})
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">البائع</ion-label>
+            <ion-select multiple class="cssInput" [(ngModel)]="selectedVendeur3" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let vendeur of vendeurs" [value]="vendeur.id">{{vendeur.nomprenom}}
+                ({{vendeur.tel}})
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">إضافة\حذف</ion-label>
+            <ion-select class="cssInput" [(ngModel)]="action" class="cssInput tajawal-Medium">
+              <ion-select-option value="add">إضافة</ion-select-option>
+              <ion-select-option value="remove">حذف</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-button expand="full" (click)="changeResponsableVendeur()" class="cssLabel tajawal-Medium fullWidth">
+          تأكيد
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner3"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+
+    <div *ngIf="role=='D'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">
+          إضافة أو حذف شراء المشترك
+        </h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الفئة</ion-label>
+            <ion-select [(ngModel)]="selectedCategory" (ionChange)="categoryChanged()" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category.nom}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">المنتج</ion-label>
+            <ion-select interface="alert" [interfaceOptions]="customAlertOptions1" multiple class="cssInput"
+              [(ngModel)]="selectedProduct" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let product of products" [value]="product.code">{{product.nom}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">إضافة\حذف</ion-label>
+            <ion-select class="cssInput" [(ngModel)]="special" class="cssInput tajawal-Medium">
+              <ion-select-option [value]="true">إضافة</ion-select-option>
+              <ion-select-option [value]="false">حذف</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh" *ngIf="special">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الثمن </ion-label>
+            <ion-input type="prixspecial" (keypress)="preventCaracters($event)" class="cssInput"
+              [(ngModel)]="prixspecial" class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-button expand="full" (click)="updateSpecial()" class="cssLabel tajawal-Medium fullWidth">
+          تحديث
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner4"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+
+    <div *ngIf="role=='D'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">تحديد نقاط كل منتج</h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الفئة</ion-label>
+            <ion-select [(ngModel)]="selectedCategory2" (ionChange)="categoryChanged2()"
+              class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category.nom}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">المنتج</ion-label>
+            <ion-select interface="alert" [interfaceOptions]="customAlertOptions2" multiple class="cssInput"
+              [(ngModel)]="selectedProduct2" class="cssInput tajawal-Medium">
+              <ion-select-option *ngFor="let product of products2" [value]="product.code">{{product.nom}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium"> النوع </ion-label>
+            <ion-select class="cssInput" [(ngModel)]="forWho" class="cssInput tajawal-Medium">
+              <ion-select-option value="V">للبائع</ion-select-option>
+              <ion-select-option value="C">للمستهلك</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">النقطة</ion-label>
+            <ion-input class="cssInput" type="number" (keypress)="preventCaracters($event)" [(ngModel)]="selectedPoint"
+              class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-button expand="full" (click)="updatePoint()" class="cssLabel tajawal-Medium fullWidth">
+          تحديث
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner5"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+
+    <div *ngIf="role=='D'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">تعديلات اخرى</h1>
+      </ion-row>
+
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">النسبة المئوية المضافة</ion-label>
+            <ion-input class="cssInput" type="number" (keypress)="preventCaracters($event)"
+              [(ngModel)]="selectedPercent" class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">تكلفة التطبيق</ion-label>
+            <ion-input class="cssInput" type="number" min="0" max="1" (keypress)="preventCaracters($event)"
+              [(ngModel)]="selectedAppCost" class="cssInput tajawal-Medium"></ion-input>
+            <p class="bs-red">تكلفة التطبيق لا يجب ان تتجاوز درهم واحد</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">الوقت المتبقي لعروض اليوم</ion-label>
+            <ion-input class="cssInput" type="number" (keypress)="preventCaracters($event)" [(ngModel)]="selectedTimer"
+              class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">التوصيل</h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium"> ثمن </ion-label>
+            <ion-input class="cssInput" type="number" (keypress)="preventCaracters($event)" [(ngModel)]="delivery_price"
+              class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium"> النوع </ion-label>
+            <ion-select class="cssInput" [(ngModel)]="forWhat" class="cssInput tajawal-Medium">
+              <ion-select-option value="special">عروض اليوم</ion-select-option>
+              <ion-select-option value="standard">فئات عادية</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">ثمن خصم للتوصيل
+            </ion-label>
+            <ion-input class="cssInput" type="number" (keypress)="preventCaracters($event)" [(ngModel)]="delivery_max"
+              class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">نسبة خصم للتوصيل
+            </ion-label>
+            <ion-input class="cssInput" type="number" (keypress)="preventCaracters($event)"
+              [(ngModel)]="delivery_percent" class="cssInput tajawal-Medium"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-button expand="full" (click)="updateOtherSettings()" class="cssLabel tajawal-Medium fullWidth">
+          تحديث
+          <ion-spinner style="color: #fcf6f6; margin-right: 10px" *ngIf="spinner5"></ion-spinner>
+        </ion-button>
+      </ion-row>
+    </div>
+
+
+
+    <div *ngIf="role=='D'">
+      <ion-row class="space-arround">
+        <h1 class="cssLabel tajawal-Medium max_content">إضافة شريط التمرير</h1>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">العنوان</ion-label>
+            <ion-input [(ngModel)]="title"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <ion-label class="cssLabel tajawal-Medium">النص</ion-label>
+            <ion-textarea [(ngModel)]="text"></ion-textarea>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div class="cssToRight">
+            <label class="fileLabel cssLabel tajawal-Bold">الصورة 
+              <input id="file_input" type="file" (change)="onChange($event)" accept=".jpg, .jpeg, .png" class="file">
+              <div class="cssImgages">
+                <div class="cssbtnImg">
+                  <img *ngIf="imageURL" [src]="imageURL">
+                  <span *ngIf="!imageURL">
+                    <fa-icon style="color: #f0344c;" icon="camera"></fa-icon>
+                  </span>
+                </div>
+              </div>
+            </label>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-arround">
+        <ion-col class="ion-no-padding cssHigh">
+          <div  class="cssToRight">
+            <ion-button (click)="addArticle()">إضافة</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
+
+
+
+
+<!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

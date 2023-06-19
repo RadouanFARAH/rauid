@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead" style="font-size: large;">
+      <span class="cssBtnHeaderLeft" routerLink="/categories">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      <span class="cssBtnHeader" [routerLink]="['/my-cart']">
+        <fa-icon icon="shopping-basket"></fa-icon>
+        <ion-badge *ngIf="commandeNum > 0">{{commandeNum}}</ion-badge>
+      </span>
+        {{category_name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <div class="cssContainer">
+
+    <ion-grid>
+            <ion-row>
+        <ion-col *ngFor="let d of data" size="6">
+
+          <ion-card class="cssCard">
+            <div class="cssImg" (click)="gotoDetails(d)">
+              <img [src]="url+'/images/image_'+d.code+'.png'" draggable="false" />
+              <h2 *ngIf="d.point_v!==0" class="cssPrixInitial tajawal-Medium" style="position: relative;
+              top: -157px;
+              right: 5px;
+              font-size: 10px;"><span class="tajawal-Bold" style="color: rgb(187, 40, 40);font-size: 10px;">.{{d.point_v}}</span></h2>
+            </div>
+
+            <div class="cssPromotion">
+              <span class="cssRecduction">{{d.reduction}}% -</span>
+            </div>
+
+            <ion-card-content class="cssHeaderCard">
+              <ion-card-title class="cssTitleCrd tajawal-Medium">{{d.nom}}</ion-card-title>
+              
+              <div class="cssPrix">
+                <h2 class="cssPrixInitial tajawal-Medium"><span class="tajawal-Bold">{{special?d.prixspecial.toFixed(2):d.prixfinal}}</span> درهم</h2>
+                <h3 class="cssPrixFinal tajawal-Medium" *ngIf="d.prixinitial">
+                  <span>{{d.prixinitial}} درهم</span> 
+                </h3>
+                <h2 class="cssPrixInitial tajawal-Medium"><span class="tajawal-Bold" style="color: rgb(34, 170, 16);">{{d.point_c}}</span> نقطة</h2>
+              </div>
+              <div class="cssPrix">
+                <h2 class="cssPrixInitial tajawal-Medium"><span class="tajawal-Bold">{{d.quantity}}</span> منتج متبقي</h2>
+              </div>
+              <div >
+                <ion-progress-bar [ngClass]="{'urgent':d.quantity/d.quantity_original<0.5}" [value]="d.quantity/d.quantity_original"></ion-progress-bar>
+              </div>
+                            <div *ngIf="d.quantity!=0">
+                <div class="cssBtnDetail" *ngIf="d.qte!=0">
+                  <div class="cssQuantity">
+                                        <div class="cssAddMinus" (click)="minusQty(d)">
+                      <fa-icon icon="minus"></fa-icon>
+                    </div>
+                    <div class="cssQty">
+                      {{d.qte}}
+                                         </div>
+                                        <div [ngClass]="{'cssAddMinus':true, 'grey_back':enableToOrder, 'grey':!enableToOrder}" (click)="addQty(d)">
+                      <fa-icon icon="plus"></fa-icon>
+                    </div>
+                  </div>
+                </div>
+          
+                
+                                <div class="cssBtnDetail" *ngIf="d.qte==0">
+                  <ion-button class="tajawal-Bold" (click)="addQty(d)">  أضف إلى السلة</ion-button>
+                </div>
+              </div>
+              <div class="cssBtnDetail tajawal-Bold" *ngIf="d.quantity==0">
+                لم يعد متوفر حاليا
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

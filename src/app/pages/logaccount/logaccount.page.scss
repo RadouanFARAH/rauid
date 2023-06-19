@@ -1,0 +1,32 @@
+.cssContainer{
+    height: 100vh !important;
+    width: 94%;
+    margin: 0px auto;
+}
+.cssLogo{
+    width: 200px; height: auto;
+    display: block;
+    margin: 20px auto;
+
+}
+
+.cssBtnContainer{
+    width: 90%;
+    margin: 0px auto;
+}
+.cssBtn{
+    height: 100px; width: 300px;
+    margin: 20px auto;
+    font-size: 30px;
+    --background: #fff !important;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 362px) {
+    .cssBtn{
+        height: 70px; width: 200px;
+        margin: 16px auto;
+        font-size: 24px;
+        --border-radius: 4px !important;
+    }
+}

@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      منتوجاتي
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+
+          <ion-row *ngFor="let d of data;  index as i">
+              <ion-col class="ion-no-padding">
+          <div class="cssProduct">
+            <div *ngIf="role==='D' || !hasBoss" (click)="updateProduct(d)" style="margin: 5px; padding: 5px; cursor: pointer;">
+              <p style="margin: 0;padding: 0;text-align: end;">
+                  <img src="assets/icon/edit.png" alt="edit">
+              </p>
+          </div>
+            <div class="cssImg">
+              <img [src]="url+'/images/image_'+d.code+'.png'" alt="image">
+                          </div>
+            <div class="cssInfos">
+              <div class="cssName tajawal-Medium">{{d.nom}}</div>
+                            <div class="cssPrixT">
+                <div class="cssPrix">
+                                    <span>{{d.prixfinal}}</span> درهم
+                </div>
+                <div class="cssPrix">
+                                    <span>{{d.point}}</span> نقطة
+                </div>
+
+                <div class="cssPrix">
+                                    <span>البائع</span> {{d.vendor}}
+                </div>
+                <div class="btnToggle">
+                  <p style="font-size: 0.8rem;">{{d.appear==1? 'ظاهر للعملاء' : 'غير ظاهر للعملاء'}}</p>
+                  <ion-toggle [checked]="d.toggel" (ionChange)="toggelappear(d)"></ion-toggle>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+</ion-content>
+
+
+ <!-- <ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>   --> 

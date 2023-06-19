@@ -1,0 +1,56 @@
+<ion-content class="bgInterface1">
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+        <img src="../../../assets/images/logo/logo.png" alt="error" class="cssLogo" draggable="false">
+      </ion-col>
+    </ion-row>
+    <ion-row  style="display: flex; justify-content: center;">
+      <ion-spinner color="prime" *ngIf="!data.length"></ion-spinner>
+    </ion-row>
+    
+    <div class="cssContainer marginTop">
+      <ion-card *ngFor="let d of data; let i = index"
+        class="bgInterface2 ion-no-margin animate__animated animate__fadeInLeft animate__delay-{{i}}s">
+        <ion-card-header>
+          <ion-card-title class="tajawal-Bold color1 cssCardTitle">مدينة {{d.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="cssTiers">
+
+            <div class="cssBtn cssBtn1"  [routerLink]="['/logregister', {role:'V', ville: d.name}]">
+              <img src="../../../assets/images/register/vendeur1.png" alt="@ayoub">
+              <h5 class="almarai-Regular">{{d.vendeur}} بائع</h5> 
+              <h3 class="almarai-bold">إنضم إلى البائعين</h3>
+            </div>
+
+            <div class="cssBtn" [routerLink]="['/logregister', {role:'C', ville: d.name}]">
+              <img src="../../../assets/images/register/clients1.png" alt="@ayoub">
+              <h5 class="almarai-Regular">{{d.consomateur}} عميل</h5> 
+              <h3 class="almarai-bold">إنضم إلى العملاء</h3>
+            </div>
+
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-row class="bgInterface2 ion-no-margin animate__animated animate__fadeInLeft animate__delay-{{data.length}}s">
+        <ion-col>
+          <h3 routerLink="/login" class="tajawal-Bold link">هل لديك حساب؟ <span style="color: #ffc900; cursor: pointer; margin: 0px 16px;"> تسجيل الدخول </span></h3>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+  </ion-grid>
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

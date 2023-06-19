@@ -1,0 +1,265 @@
+ion-toolbar:last-child{
+    height: 40px !important;
+}
+
+.segmentBtn1{
+    --color-activated: #ffd967;
+    --color-checked: #FB9300;
+    position: relative;
+    top: -9px;
+}
+.segmentBtn2{
+    --color-activated: #7bffbb ;
+    --color-checked:  rgb(2, 136, 67);
+    position: relative;
+    top: -9px;
+}
+.segmentBtn3{
+    --color-activated:  #84ceff;
+    --color-checked:  #22577A;
+    position: relative;
+    top: -9px;
+}
+.cssSection{
+    background: #ffd967;
+    padding-bottom: 8px;
+    min-height: 100vh;
+    width: 100%;
+}
+.cssHeight{
+    width: 94%;
+    margin: 0px auto;
+}
+
+.cssContainer{
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);   
+    border-radius: 6px;
+}
+.cssSectionTtile{
+    height: 50px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    padding: 11px 0px;
+    background: #FB9300;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    position: sticky;
+    top: 70px;
+}
+.cssVenteDay{
+    width: 96%;
+    margin: 0px auto;
+    background: #F9E5DA;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+.cssVenteDay .cssinfos{
+    width: 50%;
+    padding-right: 8px;
+    padding-left: 4px;
+}
+.cssinfos .cssName{
+    font-size: 15px;
+}
+.cssinfos .cssSerial{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cssVenteDay .cssCount{
+    width: 50%;
+    padding-left: 8px;
+    padding: 6px 0px 6px 8px;
+    font-size: 13px;
+}
+.cssCount .cssValue span:first-child{
+    font-size: 17px;
+    font-weight: 600;
+    margin-left: 4px;
+}
+.cssTotalDay{
+    width: 96%;
+    margin: 0px auto;
+    background: #FB9300;
+    color: #fff;
+    padding-bottom: 10px;
+}
+.cssTitleCard{
+    font-size: 20px;
+    text-align: center;
+    margin: 6px;
+}
+
+.cssCard{
+    padding-bottom: 8px;
+    padding-right: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cssCard .cssCol1{
+    width: 45%;
+}
+.cssCard .cssCol2{
+    width: 55%;
+}
+.cssCol .cssLibel{
+    font-size: 15px;
+    margin-left: 8px;
+}
+.cssCol .cssValue{
+    font-size: 18px;
+}
+.cssSection2{
+    min-height: 100vh;
+    width: 100%;
+    background: #5fff94;
+    padding-bottom: 8px;
+}
+
+.cssSection2 .cssSectionTtile{
+    background: #00A651;
+}
+
+.cssSection2 .cssVenteDay{
+    background: #d0fde6;
+}
+
+.cssSection2 .cssTotalDay{
+    background: rgb(2, 136, 67);
+}
+.cssSommeMounth{
+    background: #b3e1ff;
+}
+.cssSommeMounth .cssTitleCard{
+    color: #333;
+    font-size: 22px;
+}
+.cssSommeMounth .cssRow{
+    width: 100%;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cssSommeMounth .cssRow:first-child{
+    border-bottom: 1px solid #fafafa;
+}
+.cssSommeMounth .cssRow .cssLibel{
+    width: 18%;
+    margin-left: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.cssSommeMounth .cssRow .cssBar{
+    width: 82%;
+    padding-left: 10px;
+}
+.cssSommeMounth .cssRow .cssBar .cssStart{
+    font-size: 14px;
+    font-weight: 700;
+}
+.cssSommeMounth .cssRow .cssBar .cssEnd{
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    left: 10px;
+}
+.cssSommeMounth .cssRow .cssBar .cssColorBar{
+    background: rgb(2, 136, 67);
+}
+.cssSection3{
+    min-height: 100vh;
+    width: 100%;
+    background: #b3e1ff;
+    padding-bottom: 8px;
+}
+
+.cssSection3 .cssSectionTtile{
+    background: #22577A;
+}
+
+.cssSection3 .cssVenteDay{
+    background: #e0f3ff;
+}
+
+.cssSection3 .cssTotalDay{
+    background: #033557;
+}
+.cssSection3 .cssVenteDay .cssName{
+    font-size: 20px;
+}
+
+
+@media only screen and (max-width: 362px) {
+    .segmentBtn1, .segmentBtn2, .segmentBtn3{
+        font-size: 13px !important;
+    }
+    .cssContainer{ 
+        border-radius: 4px;
+    }
+    .cssSectionTtile{
+        height: 40px;
+        font-size: 16px;
+        padding: 8px 0px;
+    }
+    .cssVenteDay .cssinfos{
+        width: 50%;
+    }
+    .cssinfos .cssName{
+        font-size: 13px;
+    }
+    .cssinfos .cssSerial{
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .cssVenteDay .cssCount{
+        width: 50%;
+        font-size: 12px;
+    }
+    .cssCount .cssValue span:first-child{
+        font-size: 17px;
+    }
+    .cssTitleCard{
+        font-size: 18px;
+    }
+    .cssCard{
+        padding-right: 6px;
+    }
+    .cssCard .cssCol1{
+        width: 45%;
+    }
+    .cssCard .cssCol2{
+        width: 55%;
+    }
+    .cssCol .cssLibel{
+        font-size: 12px;
+    }
+    .cssCol .cssValue{
+        font-size: 16px;
+    }
+    .cssDate{
+        font-size: 15px !important;
+    }
+    .cssSommeMounth .cssTitleCard{
+        font-size: 19px;
+    }
+    .cssSommeMounth .cssRow .cssLibel{
+        font-size: 13px;
+    }
+    .cssSommeMounth .cssRow .cssBar .cssStart{
+        font-size: 12px;
+    }
+    .cssSommeMounth .cssRow .cssBar .cssEnd{
+        font-size: 12px;
+    }
+    .cssSection3 .cssVenteDay .cssName{
+        font-size: 17px;
+    }
+
+}

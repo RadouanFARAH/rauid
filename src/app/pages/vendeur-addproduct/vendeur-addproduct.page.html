@@ -1,0 +1,337 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      {{product?'تحديث منتج':'إضافة منتج'}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+
+        <form class="cssForm" [formGroup]="dataForm">
+
+      <ion-row *ngIf="role=='R'">
+        <ion-col class="ion-no-padding">
+          <div *ngIf="!product">
+            <ion-label class="cssLabel tajawal-Bold">البائعين</ion-label>
+            <ion-select multiple="true" placeholder="إختر البائع" class="cssInput tajawal-Medium"
+              formControlName="lvendeurs" okText="OK" cancelText="Annuler">
+              <ion-select-option *ngFor="let v of vendeurs" [value]="v.id">{{v.nomprenom}}</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="role=='D'">
+        <ion-col class="ion-no-padding">
+          <div *ngIf="!product">
+            <ion-label class="cssLabel tajawal-Bold">المسؤولين</ion-label>
+            <ion-select multiple="true" placeholder="إختر المسؤول" class="cssInput tajawal-Medium"
+              formControlName="lresponsables" okText="OK" cancelText="Annuler">
+              <ion-select-option *ngFor="let v of responsables" [value]="v.id">{{v.nomprenom}}</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">اسم المنتج</ion-label>
+            <ion-input placeholder="ضع إسم مناسب لمنتوجك الخاص" type="text" class="cssInput tajawal-Medium"
+              formControlName="nom">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p class="tajawal-Bold" style="color: rgb(216, 31, 31);margin-right: 10px;">{{nomMessage}}</p>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">الثمن الأصلي</ion-label>
+            <ion-input type="number" (keypress)="preventCaracters($event)" min="0" placeholder="ضع ثمن المنتوج"
+              class="cssInput tajawal-Medium" formControlName="prixInitial">
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">ثمن التخفيض</ion-label>
+            <ion-input type="number" (keypress)="preventCaracters($event)" min="0" placeholder="ضع ثمن تخفيض المنتوج"
+              class="cssInput tajawal-Medium" formControlName="prixFinal">
+            </ion-input>
+          </div>
+        </ion-col>
+
+
+      </ion-row>
+      <ion-row>
+        <p class="tajawal-Bold" style="color: rgb(216, 31, 31);margin-right: 10px;">{{priceError}}</p>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">الفئات</ion-label>
+            <ion-select multiple placeholder="إختر الفئة" class="cssInput tajawal-Medium" formControlName="category"
+              okText="OK" cancelText="Annuler">
+              <ion-select-option *ngFor="let c of categories" [value]="c.id">{{c.nom}}</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p class="tajawal-Bold" style="color: rgb(216, 31, 31);margin-right: 10px;">{{categoryMessage}}</p>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">الوصف</ion-label>
+                        <ion-textarea rows="3" cols="20" class="cssTextAera tajawal-Medium" placeholder="أضف وصف للمنتوج الخاص بك"
+              formControlName="description">
+            </ion-textarea>
+          </div>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">الكمية (منتج) </ion-label>
+            <ion-input type="number" (keypress)="preventCaracters($event)" min="0" placeholder="ضع الكمية المنتوج"
+              class="cssInput tajawal-Medium" formControlName="quantity">
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">كم منتج في الصندوق</ion-label>
+            <ion-input type="number" (keypress)="preventCaracters($event)" min="0" placeholder="ضع الكمية"
+              class="cssInput tajawal-Medium" formControlName="qte_inbox">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-list>
+            <ion-radio-group formControlName="quantity_type">
+              <ion-list-header>
+                <ion-label>نوع الكمية في الطلبية</ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>غير محدودة</ion-label>
+                <ion-radio slot="start" [value]="false"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>محدودة</ion-label>
+                <ion-radio slot="start" [value]="true"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+
+                  </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col class="ion-no-padding">
+          <div *ngIf="chosen_quantity_type">
+            <ion-label class="cssLabel tajawal-Bold">حدد الكمية التي لا تتعدى الطلبية الواحدة</ion-label>
+            <ion-input (keypress)="preventCaracters($event)" type="number" placeholder="حدد الكمية التي لا تتعدى الطلبية الواحدة" class="cssInput tajawal-Medium"
+              formControlName="quantity_type_value">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">ثمن التوصيل </ion-label>
+            <ion-input (keypress)="preventCaracters($event)" placeholder="ضع ثمن التوصيل " type="text"
+              class="cssInput tajawal-Medium" formControlName="deliveryPrice">
+            </ion-input>
+          </div>
+        </ion-col>
+
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">نقطة  المستهلك </ion-label>
+            <ion-input (keypress)="preventCaracters($event)" placeholder="ضع نقطة  المستهلك" type="text"
+              class="cssInput tajawal-Medium" formControlName="point_c">
+            </ion-input>
+          </div>
+        </ion-col>
+
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">نقطة البائع  </ion-label>
+            <ion-input (keypress)="preventCaracters($event)" placeholder="ضع نقطة البائع"  type="text"  class="cssInput tajawal-Medium" formControlName="point_v">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div class="btnToggle" style="margin-left: 12px;
+      margin-right: 12px;">
+        <p style="font-size: 0.8rem;">{{special?'':'لن'}} يعرض في عروض اليوم</p>
+        <ion-toggle [checked]="special" (ionChange)="toggelspecial()"></ion-toggle>
+      </div>
+
+      <ion-row *ngIf="special">
+        <ion-col class="ion-no-padding">
+          <div>
+            <ion-label class="cssLabel tajawal-Bold">ثمنه في عروض اليوم </ion-label>
+            <ion-input (keypress)="preventCaracters($event)" placeholder="ضع ثمنه في عروض اليوم " type="text"
+              class="cssInput tajawal-Medium" formControlName="prixspecial">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+            <ion-row style="margin-left: 12px;
+      margin-right: 12px;">
+        <label class="fileLabel cssLabel tajawal-Bold">الصورة الأمامية
+          <input id="file_input" type="file" (change)="onChange($event)" accept=".jpg, .jpeg, .png" class="file">
+          <div class="cssImgages">
+            <div class="cssbtnImg">
+              <img *ngIf="imageURL" [src]="imageURL">
+              <span *ngIf="!imageURL">
+                <fa-icon style="color: #f0344c;" icon="camera"></fa-icon>
+              </span>
+            </div>
+            <div *ngIf="imageURL" (click)="deleteImg('P')" class="cssbtnImg2">
+              تغيير
+            </div>
+          </div>
+        </label>
+                <label class="fileLabel cssLabel tajawal-Bold">باقي الصور
+          <input multiple type="file" (change)="onChangeM($event)" accept=".jpg, .jpeg, .png" class="file">
+          <div class="cssImgages">
+            <div class="cssbtnImg clr">
+                            <span>
+                <fa-icon style="color: #f0344c;" icon="plus-circle"></fa-icon>
+              </span>
+            </div>
+          </div>
+        </label>
+
+        <div style="display: contents;" *ngIf="imageURLs2.length>0">
+
+
+          <label *ngFor="let img of imageURLs2; let i = index" class="fileLabelB cssLabel tajawal-Bold">
+            <div style="width: 100px; height: 100px;">
+              <div class="cssImgages">
+                <div class="cssbtnImg">
+                  <img [src]="img">
+                </div>
+                <div class="cssbtnImg2">
+                  <ion-checkbox (ionChange)="deleteImg2(img)" color="primary"></ion-checkbox>
+                  حذف
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+
+
+        <div style="display: contents;" *ngIf="imageURLs.length>0">
+
+
+          <label *ngFor="let img of imageURLs; let i = index" class="fileLabelB cssLabel tajawal-Bold">
+            <div style="width: 100px; height: 100px;">
+              <div class="cssImgages">
+                <div class="cssbtnImg">
+                  <img [src]="img">
+                </div>
+                <div (click)="deleteImg(i)" class="cssbtnImg22">
+                  حذف
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+      </ion-row>
+
+            <ion-row>
+        <ion-col>
+          <div style="margin: 16px 0px;">
+            <ion-button [disabled]="dataForm.invalid" expand="block" class="tajawal-Bold" (click)="showAlert(null)">
+              {{product?'تحديث المنتج':'نشر المنتج'}}
+
+              <ion-spinner style="color:#ffffff; margin-right: 10px;" *ngIf="spinner"></ion-spinner>
+
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="product">
+        <ion-col>
+          <div style="margin: 16px 0px;">
+            <ion-button [disabled]="dataForm.invalid" expand="block" class="tajawal-Bold" (click)="showAlert(product)">
+              حذف المنتج
+              <ion-spinner style="color:#ffffff; margin-right: 10px;" *ngIf="spinner2"></ion-spinner>
+
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </form>
+
+  </ion-grid>
+
+    <div class="alerte" *ngIf="showSuccessAlerte">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/successAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p class="message_content tajawal-Medium">عملية نشر المنتج قد تمت بنجاح </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alerte" *ngIf="showSuccessAlerte2">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/successAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p class="message_content tajawal-Medium">
+          عملية حذف المنتج قد تمت بنجاح
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alerte" *ngIf="showErrorAlerte">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/errorAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p id="koho" class="message_content tajawal-Medium">
+          فشل في محاولة نشر المنتج. المرجو منك إعادة العملية.
+        </p>
+        <div class="message_btn_Err">
+          <button class="tajawal-Medium">إعادة المحاولة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

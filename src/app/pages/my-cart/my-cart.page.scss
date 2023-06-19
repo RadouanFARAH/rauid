@@ -1,0 +1,217 @@
+
+
+.column {
+    box-shadow: 0px 0px 10px 0px #0000003d;
+    border-radius: 0px;
+    margin: 0 5px;
+}
+.cssProduct{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-gap: 5px;
+    box-shadow: 0px 0px 10px 0px #cdbaba94;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.cssProduct .cssImg{
+}
+.cssProduct .cssImg img{
+}
+
+.cssInfos {
+}
+.cssInfos .cssName{
+    margin-bottom: 0px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+.cssInfos .cssPrixT{
+}
+
+.cssInfos .cssPrix{
+    width: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+}
+.cssInfos .cssPrix span{
+    font-size: 20px;
+}
+
+.cssQuantity{
+    background: #d3414f;
+    display: flex;
+    border-radius: 5px;
+
+}
+
+.cssQuantity .cssAddMinus{
+    flex: 1;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    padding: 4px 0px 6px 0px;
+    cursor: pointer;
+}
+.cssQuantity .cssQty{
+    flex: 1;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+        background: #fff !important;
+    border-radius: 5px;
+    }
+
+.cssDelete{
+}
+.cssDelete .cssTrashBtn{
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px !important;
+    color: #fff;
+    background: #ff4a39  !important;
+}
+.cssSomme{
+    height: 60px;
+    width: 100%;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EAE7E7;
+    font-size: 24px;
+    color: #964A4A;
+    position: fixed;
+    bottom: 80px;
+    z-index: 100000;
+}
+.cssS{
+    width: 100%;
+}
+.cssS .cssSome{
+    text-align: center;
+    font-size: 19px;
+    padding: 3px;
+    border-bottom: 1px solid #fff;
+    color: #E50914;
+}
+.cssS .cssSomeValue{
+    align-items: center;
+    margin: 5px;
+    box-shadow: 0px 0px 5px 0px #ebebeb;
+    padding: 5px;
+    border-radius: 7px;
+    background: #dbffdb;
+    color: #E50914;
+}
+
+.cssS p{
+    margin-top: 5px !important;
+    margin-bottom: 3px !important;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+.cssS .cssValue{
+    font-size: 19px;
+}
+.cssS .cssValue span{
+    font-size: 14px;
+    margin-right: 5px;
+}
+ion-button{
+    width: 80% !important;
+    height: 50px;
+    margin-right: 10%;
+    --color: #fff;
+    font-size: 22px;
+    --background: #E50914 !important;
+    border-radius: 10px;
+    z-index: 100000;
+}
+
+
+.titlePrice{
+    color: chocolate;
+    font-weight: 800;
+    margin-left: 5px;
+}
+
+
+@media only screen and (max-width: 362px) {
+    .cssProduct{
+        margin: 4px;
+        padding: 4px;
+                box-shadow: 0px 0px 10px 0px #cdbaba94;
+    }
+    .cssProduct .cssImg{
+        width: 90px;
+    }
+    
+    .cssInfos {
+        padding-left: 4px;
+    }
+    .cssInfos .cssName{
+        font-size: 15px;
+    }
+    .cssInfos .cssPrix{
+        width: 100%;
+        font-size: 12px;
+    }
+    .cssInfos .cssPrix span{
+        font-size: 16px;
+    }
+  
+    .cssQuantity .cssQty{
+        font-size: 14px;
+    }
+    .cssDelete .cssTrashBtn{
+        font-size: 14px;
+        text-align: center;
+    }
+    .cssInfos .cssPrixT:last-child{
+        margin-bottom: 0px;
+    }
+    .cssSomme{
+        height: 60px;
+        font-size: 16px;
+    }
+    ion-button{
+        width: 80% !important;
+        height: 40px;
+        font-size: 16px;
+        --border-radius: 4px;
+        margin-right: 10%;
+    }
+    .cssHeight{
+        padding: 5px;
+    }
+    .cssS{
+        width: 100%;
+    }
+    .cssS .cssSome{
+        font-size: 16px;
+    }
+    .cssS p{
+        margin-top: 0px !important;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .cssS .cssValue{
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .cssS .cssValue span{
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
+.grey_back{
+    background: #c0bebe !important;
+}
+.grey{
+    background: #ff4747 !important;
+}

@@ -1,0 +1,274 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      حصيلة المبيعات
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment value="today" [(ngModel)]="selectedSegment" (ionChange)="segmentChanged()" class="cssSegment">
+      <ion-segment-button value="today" class="segmentBtn1">
+        اليوم
+      </ion-segment-button>
+      <ion-segment-button value="yesterday" class="segmentBtn2">
+        الايام السابقة </ion-segment-button>
+      <ion-segment-button value="monthsbefore" class="segmentBtn3">
+        الاشهر السابقة
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="bgInterface2 cssPosition">
+  <div>
+    <ion-spinner style="display: contents; place-content: center; margin: 0 auto;color: tomato;" *ngIf="spinner">
+    </ion-spinner>
+  </div>
+
+
+    <div class="cssSection" *ngIf="!spinner && selectedSegment == 'today'">
+    <div class="cssHeight">
+      <ion-grid class="ion-no-padding">
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssSectionTtile tajawal-Bold">
+              أرباح اليوم
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row *ngFor="let d of dataDay" style="margin: 6px 0px;">
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssVenteDay">
+              <div class="cssinfos">
+                <div class="cssName Tajawal-Medium">{{d.nom}}</div>
+                              </div>
+              <div class="cssCount">
+                <div class="cssValue"><span>{{d.quantite}}</span><span class="tajawal-Medium">وحدة</span></div>
+                <div class="cssValue"><span style="color: rgb(206, 48, 48);">{{d.point_v * d.quantite}}</span><span class="tajawal-Medium">نقطة</span>
+                </div>
+                <div class="cssValue"><span>{{(d.prixfinal * d.quantite).toFixed(2)}}</span><span
+                    class="tajawal-Medium">درهم</span></div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssTotalDay" style="margin-bottom: 12px;">
+              <div class="cssTitleCard tajawal-Boldd"> المجموع</div>
+
+              <div class="cssCard">
+                <div class="cssCol1">
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">عدد المنتوجات :</span>
+                    <span class="cssValue">{{numProductIDs.length}}</span>
+                  </div>
+
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">عدد الفاتورات :</span>
+                    <span class="cssValue">{{orders}}</span>
+                  </div>
+                </div>
+
+                <div class="cssCol2">
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">النقط :</span>
+                    <span class="cssValue">{{pointtotal}}</span>
+                  </div>
+
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">المبلغ :</span>
+                    <span class="cssValue">{{prixtotal}}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </ion-col>
+        </ion-row>
+        
+      </ion-grid>
+    </div>
+  </div>
+
+    <div class="cssSection2" *ngIf="!spinner && selectedSegment == 'yesterday'">
+    <div class="cssHeight">
+      <ion-grid class="ion-no-padding">
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssSectionTtile tajawal-Bold">
+              أرباح الايام السابقة
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let d of dataDay; let i=index" style="margin: 6px 0px;">
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssVenteDay">
+              <div class="cssinfos">
+                <div class="cssName Tajawal-Medium">{{arrdays[i]}}</div>
+                              </div>
+              <div class="cssCount">
+                                <div class="cssValue"><span  style="color: rgb(206, 48, 48);">{{d.pointtotal_v}}</span><span class="tajawal-Medium">نقطة</span></div>
+                <div class="cssValue"><span>{{(d.prixfinal).toFixed(2)}}</span><span class="tajawal-Medium">درهم</span></div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssTotalDay" style="margin-bottom: 12px;">
+              <div class="cssTitleCard tajawal-Boldd"> المجموع </div>
+
+              <div class="cssCard">
+                <div class="cssCol1">
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">عدد المنتوجات :</span>
+                    <span class="cssValue">{{numProductIDs.length}}</span>
+                  </div>
+
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">عدد الفاتورات :</span>
+                    <span class="cssValue">{{orders}}</span>
+                  </div>
+                </div>
+
+                <div class="cssCol2">
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">النقط :</span>
+                    <span class="cssValue">{{pointtotal}}</span>
+                  </div>
+
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">المبلغ :</span>
+                    <span class="cssValue">{{prixtotal.toFixed(2)}}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="role=='V'">
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssSommeMounth" style="margin-top: 12px; margin-bottom: 12px;">
+
+              <div class="cssTitleCard tajawal-Boldd">الهدف</div>
+
+              <div>
+                <div class="cssRow" *ngIf="points_goal">
+                  <div class="cssLibel tajawal-Medium">النقط</div>
+                  <div class="cssBar">
+                    <span class="cssEnd">{{points_goal}}</span>
+                    <span class="cssStart">{{pointtotal}}</span>
+                    <div class="progress">
+                      <div class="progress-bar cssColorBar" role="progressbar"
+                        [ngStyle]="{'width.%': ((pointtotal/points_goal)*100).toFixed(0)}" aria-valuemin="0" aria-valuemax="100">
+                        {{((pointtotal/points_goal)*100).toFixed(0)}}%</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cssRow" *ngIf="orders_goal">
+                  <div class="cssLibel tajawal-Medium">الفاتورات</div>
+                  <div class="cssBar">
+                    <span class="cssEnd">{{orders_goal}}</span>
+                    <span class="cssStart">{{orders}}</span>
+                    <div class="progress">
+                      <div class="progress-bar cssColorBar" role="progressbar"
+                        [ngStyle]="{'width.%': (orders/orders_goal)*100}" aria-valuemin="0" aria-valuemax="100">
+                        {{((orders/orders_goal)*100).toFixed(0)}}%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+  </div>
+
+    <div class="cssSection3" *ngIf="!spinner && selectedSegment == 'monthsbefore'">
+    <div class="cssHeight">
+      <ion-grid class="ion-no-padding">
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssSectionTtile tajawal-Bold">
+              ارباح الاشهر السابقة
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let d of dataDay; let i=index" style="margin: 6px 0px;">
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssVenteDay">
+              <div class="cssinfos">
+                <div class="cssName Tajawal-Medium">{{arrmonths2[i]}}</div>
+                              </div>
+              <div class="cssCount">
+                                <div class="cssValue"><span  style="color: rgb(206, 48, 48);">{{d.pointtotal_v?d.pointtotal_v:0}}</span><span class="tajawal-Medium">نقطة</span></div>
+                <div class="cssValue"><span>{{d.prixfinal.toFixed(2)}}</span><span class="tajawal-Medium">درهم</span></div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssTotalDay" style="margin-bottom: 12px;">
+              <div class="cssTitleCard tajawal-Boldd">المجموع</div>
+
+              <div class="cssCard">
+                <div class="cssCol1">
+                  
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">عدد الفاتورات :</span>
+                    <span class="cssValue">{{orders}}</span>
+                  </div>
+                </div>
+
+                <div class="cssCol2">
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">النقط :</span>
+                    <span class="cssValue">{{pointtotal}}</span>
+                  </div>
+
+                  <div class="cssRow">
+                    <span class="cssLibel tajawal-Boldd">المبلغ :</span>
+                    <span class="cssValue">{{prixtotal.toFixed(2)}}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </ion-col>
+        </ion-row>
+
+              </ion-grid>
+    </div>
+  </div>
+
+</ion-content>
+
+ <!-- <ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+-->

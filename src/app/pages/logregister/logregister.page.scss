@@ -1,0 +1,212 @@
+
+.fileLabel {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+.file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+.cssImgages {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cssbtnImg {
+    img {
+        height: 90px;
+    }
+    width: 90px;
+    height: 90px;
+
+    background: #fdfdfd;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cssbtnImg fa-icon {
+    font-size: 36px;
+    color: #fff;
+}
+
+ion-grid{
+
+    height: 100%; width: 100%;
+    padding: 0px 8px;
+}
+.cssLogo{
+    width: 100px; height: auto;
+    display: block;
+    margin: 0px auto;
+    margin: 20px auto;
+
+}
+.cssTitle{
+    margin: 0px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    position: relative;
+    top: -10px;
+}
+.cssForm{
+    width: 300px;
+    margin: 30px auto;
+    margin-top: 12px;
+}
+
+.cssGender{
+ width: 80px;
+ border-radius: 10px;
+ margin-bottom: 8px;
+ position: relative;
+ left: -30px;
+ cursor: pointer;
+}
+.cssGender img{
+    width: 100%; height: auto;
+}
+
+ion-col{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.cssToRight{
+    text-align: start;
+}
+.cssLabel{
+    font-size: 16px;
+    color: #fff;
+    text-align: right !important;
+}
+
+.cssInput{
+    height: 40px; width: 300px;
+    margin: 6px 0px;
+    font-size: 16px !important;
+    --background: #fff !important;
+    border-radius: 6px;
+    background-color: #fff !important;
+}
+.cssBtn{
+    height: 40px;
+    font-size: 20px;
+    --background: #fff !important;
+    border-radius: 6px;
+    border: none;
+    position: relative; left: 3px;
+}
+
+
+
+@media only screen and (max-width: 362px) {
+    .cssLogo{
+        width: 80px;
+        margin: 20px auto;
+
+    }
+    .cssTitle{
+        font-size: 14px;
+        position: relative;
+        top: -8px;
+    }
+
+    .cssForm{
+        width: 96%;
+        margin: 14px auto;
+    }
+    .cssGender{
+        width: 70px; height: 70px;
+    }
+
+    .cssLabel{
+        font-size: 14px;
+    }
+    .cssInput{
+        height: 40px; width: 100%;
+        margin: 5px 0px;
+        padding-right: 10px !important;
+        font-size: 14px !important;
+        border-radius: 4px;
+    }
+
+    .cssBtn{
+        height: 40px; width: 100%;
+        font-size: 18px;
+        --border-radius: 4px !important;
+        margin-top: 25px;
+    }
+
+}
+
+#goback{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 6px;
+}
+
+
+.cssBtnWhats {
+    --background: rgb(19, 187, 19);
+}
+
+
+.cssContentCard .cssNum .cssBtn {
+    margin-top: 8px !important;
+    height: 42px !important;
+    width: 100%;
+    font-size: 13px;
+    --background: #fff !important;
+    color: #ffffff;
+    --border-radius: 21px !important;
+    border: none;
+}
+.cssContentCard .cssNum .cssBtn img {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+}
+
+.cssContentCard .cssNum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cssContentCard .cssNum .cssValue {
+    direction: rtl;
+    font-size: 15px;
+}
+
+.cssContentCard .cssNum .cssBtn {
+    height: 38px !important;
+    width: 100%;
+    font-size: 11px;
+    --border-radius: 19px !important;
+    border: none;
+}
+.cssContentCard .cssNum .cssBtn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.cssNum2 {
+    margin: 0 auto;
+}

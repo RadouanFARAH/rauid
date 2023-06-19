@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" routerLink="/vendeur-demande-conso">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      حصيلة الطلبيات السابقة
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+    <div class="cssHeight">
+      <ion-row *ngFor="let d of data" [routerLink]="['/vendeur-demandedetail']">
+        <ion-col class="ion-no-padding">
+          <div [style.background]="d.etatDemande == 'V'? '#00A651' : 'red'" class="cssCard">
+                        <div>
+              <span class="cssDate">{{d.dateCommande}}</span>
+            </div>
+            <div class="cssNum" *ngIf="d.etatDemande === 'V'">
+              <span class="cssLibel Tajawal-Medium">رقم الطلبية :</span>
+              <span class="cssValue">{{d.numComande}}</span>
+            </div>
+            <div class="cssMsgRefuse" *ngIf="d.etatDemande === 'R'">
+              <span class="cssLibel Tajawal-Medium">قد تم رفض الطلبية</span>
+            </div>
+                      </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

@@ -1,0 +1,238 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      تفاصيل الطلبية
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+
+
+  <div class="bgInterface2" *ngIf="printing" id="printer">
+    <div>
+      <div id="printable">
+        <div id="rowoflogo" style="margin-bottom: 10px !important">
+          <div>
+            <div class="cssFacture">
+              <div class="cssHeader">
+                <div class="h_1">
+                  <div>
+                    <p>
+                      <span *ngIf="order_details.length" class="">{{order_details[0].dateCommande | date:"dd/MM/yyyy"}}</span>
+                    </p>
+                    <p>
+                      <span class="cssCode tajawal-Boldd">فاتورة رقم : </span>
+                      <span *ngIf="order_details.length">{{order_details[0].codeCommande}}</span>
+                    </p>
+                  </div>
+
+                  <div class="logo" *ngIf="order_details.length">
+                    <img [src]="url+'/images/profile_image_'+order_details[0].code_seller+'.png'" onerror="this.src='../../assets/images/logo.png';" />
+                  </div>
+                </div>
+
+                <div class="h_2">
+                  <div>
+                    <p *ngIf="order_details.length">
+                      {{order_details[0].nameStore}}
+                    </p>
+                    <p *ngIf="order_details.length" class="almarai-Regular">
+                      <span>{{order_details[0].quartier}}</span>
+                    </p>
+                  </div>
+                  <div>
+                    <p>العميل</p>
+                    <p *ngIf="order_details.length" class="almarai-Regular">
+                      {{order_details[0].nom_buyer}}
+                    </p>
+                  </div>
+                  <div>
+                    <p>رمز العميل</p>
+                    <p *ngIf="order_details.length" class="almarai-Regular">
+                      {{order_details[0].imgStore}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="rowofproducts" *ngFor="let d of order_details">
+          <div>
+            <div class="cssCard1 cssCard11">
+              <div class="cssProduct2">
+
+                <div class="cssInfos" style="direction: rtl;">
+                  <p class="cssNumber" style="direction: rtl;">
+                    <span class="cssValue tajawal-Boldd">{{(d.prixunite *
+                      d.quantite).toFixed(2)}}</span>درهم <br /><span
+                      class="cssValue tajawal-Boldd">{{(d.point_c).toFixed(0)}} </span>نقط
+                  </p>
+                </div>
+
+                <div class="cssInfos" style="direction: rtl;">
+                  <p>
+                    <span class="cssValue tajawal-Medium cssQte">{{d.quantite}}</span>
+                    <span class="cssValue tajawal-Boldd">{{d.nomProduit}}</span>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="rowofsum">
+          <div>
+            <div class="cssCard1" style="direction: rtl;">
+              <div class="cssTotal">
+                <div>
+                  <p style="direction: rtl;" class="cssLibel tajawal-Medium">مجموع النقط</p>
+                  <p style="direction: rtl;" *ngIf="order_details.length" class="cssValue tajawal-Bold">
+                    {{order_details[0].pointtotal_c}}
+                  </p>
+                </div>
+                <div>
+                  <p style="direction: rtl;" class="cssLibel tajawal-Medium">مجموع المبلغ (درهم)</p>
+                  <p style="direction: rtl;" *ngIf="order_details.length" class="cssValue tajawal-Bold">
+                    {{somme.toFixed(2)}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="bubbles" refreshingText="rechargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="ion-no-padding">
+    <div id="printable">
+            <ion-row style="margin-bottom: 10px !important">
+        <ion-col class="ion-no-padding">
+          <div class="cssFacture">
+            <div class="cssHeader">
+              <div class="h_1">
+                <div>
+                  <p>
+                    <span *ngIf="order_details.length" class="">{{order_details[0].dateCommande | date:
+                      "dd/MM/yyyy"}}</span>
+                  </p>
+                  <p>
+                    <span class="cssCode tajawal-Boldd">فاتورة رقم : </span>
+                    <span *ngIf="order_details.length">{{order_details[0].codeCommande}}</span>
+                  </p>
+                </div>
+                <div class="logo" *ngIf="order_details.length">
+                  <img [src]="url+'/images/profile_image_'+order_details[0].code_seller+'.png'" onerror="this.src='../../assets/images/logo.png';" />
+                </div>
+              </div>
+
+              <div class="h_2">
+                <div>
+                  
+                  <p *ngIf="order_details.length">
+                    {{order_details[0].nameStore}}
+                  </p>
+                  <p *ngIf="order_details.length" class="almarai-Regular">
+                    <span>{{order_details[0].quartier}}</span>
+                  </p>
+                </div>
+                <div>
+                  <p>العميل</p>
+                  <p *ngIf="order_details.length" class="almarai-Regular">
+                    {{order_details[0].nom_buyer}}
+                  </p>
+                </div>
+                <div>
+                  <p>رمز العميل</p>
+                  <p *ngIf="order_details.length" class="almarai-Regular">
+                    {{order_details[0].imgStore}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+            <ion-row *ngFor="let d of order_details">
+        <ion-col class="ion-no-padding">
+          <div class="cssCard1 cssCard11">
+            <div class="cssProduct">
+              <div class="cssImg">
+                <img [src]="url+'/images/image_'+d.codeProduit+'.png'" alt="error" />
+              </div>
+
+              <div class="cssInfos">
+                <p>
+                  <span class="cssValue tajawal-Medium cssQte">{{d.quantite}}</span>
+                  <span class="cssValue tajawal-Boldd">{{d.nomProduit}}</span>
+                </p>
+                <p>
+                  <span class="cssCode tajawal-Medium"></span>
+                  <span class="cssCode tajawal-Medium"></span>
+                </p>
+              </div>
+
+              <div class="cssInfos">
+                <p class="cssNumber">
+                  <span class="cssValue tajawal-Boldd">{{(d.prixunite * d.quantite).toFixed(2)}}</span>درهم <br /><span
+                    class="cssValue tajawal-Boldd">{{(d.point_c).toFixed(0)}} </span>نقط
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+            
+            <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="cssCard1">
+            <div class="cssTotal">
+              <div>
+                <p class="cssLibel tajawal-Medium">مجموع النقط</p>
+                <p *ngIf="order_details.length" class="cssValue tajawal-Bold">
+                  {{order_details[0].pointtotal_c}}
+                </p>
+              </div>
+              <div>
+                <p class="cssLibel tajawal-Medium">مجموع المبلغ (درهم)</p>
+                <p *ngIf="order_details.length" class="cssValue tajawal-Bold">
+                  {{somme.toFixed(2)}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+          </ion-grid>
+  <ion-button expand="full" (click)="printPage()">تحميل</ion-button>
+
+  </ion-content>
+
+
+
+
+<!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

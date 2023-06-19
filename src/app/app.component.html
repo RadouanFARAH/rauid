@@ -1,0 +1,307 @@
+<ion-app>
+  <ion-menu side="start" contentId="main" menuId="consommateur-menu">
+    <ion-content class="cssMenu">
+      <div class="bgColorProfi">
+        <div class="profil">
+          <ion-avatar>
+            <img
+              [src]="profileURL"
+              onerror="this.src='../assets/images/register/user1.png';"
+              draggable="false"
+            />
+          </ion-avatar>
+          
+          <div class="detail">
+            <div class="almarai-bold">{{ name }}</div>
+                      </div>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item
+          [routerLink]="['consommateur-demandehistorique']"
+          *ngIf="role == 'C'"
+        >
+          <span class="cssIconMenu">
+            <fa-icon icon="clipboard-list"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >طلبياتي السابقة</ion-label
+          >
+        </ion-item>
+        <ion-item routerLink="consommateur-points" *ngIf="role == 'C'">
+          <span class="cssIconMenu">
+            <fa-icon icon="star"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">حصيلة نقاطي</ion-label>
+        </ion-item>
+        <ion-item (click)="logout('C')">
+          <span class="cssIconMenu">
+            <fa-icon icon="sign-out-alt"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">خروج</ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="cssVersion">
+        <div>
+          <img
+            [src]="profileURL"
+            onerror="this.src='../assets/images/register/user1.png';"
+            alt="error_logo"
+          />
+        </div>
+        <div>
+          <span class="cssV">Version 3.1</span>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <ion-menu side="start" contentId="main" menuId="responsable-menu">
+    <ion-content class="cssMenu">
+      <div class="bgColorProfi">
+        <div class="profil">
+          <ion-avatar>
+            <img
+              [src]="profileURL"
+              onerror="this.src='../assets/images/register/user1.png';"
+              draggable="false"            />
+          </ion-avatar>
+          
+          <div class="detail">
+            <div class="almarai-bold">{{ name }}</div>
+          </div>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item
+          [routerLink]="['/logregister', { ville: '', role: 'V' }]"
+          *ngIf="role == 'R'"
+        >
+          <span class="cssIconMenu">
+            <fa-icon icon="user-plus"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >إضافة بائع جديد</ion-label
+          >
+        </ion-item>
+
+        <ion-item
+          [routerLink]="['/vendeur-addproduct', { role: 'R' }]"
+          *ngIf="role == 'R'"
+        >
+          <span class="cssIconMenu">
+            <fa-icon icon="cart-plus"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >إضافة منتج جديد</ion-label
+          >
+        </ion-item>
+
+        <ion-item routerLink="/responsable-my-vend">
+          <span class="cssIconMenu">
+            <fa-icon icon="users"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">قائمة البائعين</ion-label>
+        </ion-item>
+
+        <ion-item routerLink="/vendeur-statistique-vente">
+          <span class="cssIconMenu">
+            <fa-icon icon="chart-pie"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">حصيلة المبيعات</ion-label>
+        </ion-item>
+
+        <ion-item routerLink="/responsable-settings" *ngIf="role == 'R'">
+          <span class="cssIconMenu">
+            <fa-icon icon="cog"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">تعديلات</ion-label>
+        </ion-item>
+
+        <ion-item (click)="logout('R')">
+          <span class="cssIconMenu">
+            <fa-icon icon="sign-out-alt"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">خروج</ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="cssVersion">
+        <div>
+          <img src="../../../assets/images/logo/logo4.png" alt="error_logo" />
+        </div>
+        <div>
+          <span class="cssV">Version 3.1</span>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <ion-menu side="start" contentId="main" menuId="vendeur-menu">
+    <ion-content class="cssMenu">
+      <div class="bgColorProfi">
+        <div class="profil">
+          <ion-avatar>
+            
+            <img
+              [src]="profileURL"
+              onerror="this.src='../assets/images/register/user1.png';"
+              draggable="false"
+            />
+          </ion-avatar>
+          
+          <div class="detail">
+            <div class="almarai-bold">{{ name }}</div>
+          </div>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item
+          [routerLink]="['/vendeur-addproduct', { role: 'V' }]"
+          *ngIf="role == 'V'"
+        >
+          <span class="cssIconMenu">
+            <fa-icon icon="cart-plus"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >إضافة منتج جديد</ion-label
+          >
+        </ion-item>
+
+        <ion-item
+          [routerLink]="['/logregister', { ville: '', role: 'C' }]"
+          *ngIf="role == 'V'"
+        >
+          <span class="cssIconMenu">
+            <fa-icon icon="user-plus"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >إضافة عميل جديد</ion-label
+          >
+        </ion-item>
+
+        <ion-item routerLink="/vendeur-my-product">
+          <span class="cssIconMenu">
+            <fa-icon icon="store"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >قائمة المنتوجات</ion-label
+          >
+        </ion-item>
+
+        <ion-item [routerLink]="['/vendeur-my-conso', {id}]">
+          <span class="cssIconMenu">
+            <fa-icon icon="users"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">قائمة العملاء</ion-label>
+        </ion-item>
+        <ion-item routerLink="/vendeur-statistique-vente">
+          <span class="cssIconMenu">
+            <fa-icon icon="chart-pie"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">حصيلة المبيعات</ion-label>
+        </ion-item>
+        <ion-item>
+          <span class="cssIconMenu">
+            <fa-icon icon="chart-pie"></fa-icon>
+          </span>
+          <ion-toggle [(ngModel)]="toggleValue" (ionChange)="toggleChanged()"></ion-toggle>
+          <ion-label class="almarai-bold cssItemMenu">{{showing}} المسافات </ion-label>
+        </ion-item>
+        <ion-item routerLink="/responsable-settings" *ngIf="!hasBoss">
+          <span class="cssIconMenu">
+            <fa-icon icon="cog"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">تعديلات</ion-label>
+        </ion-item>
+        <ion-item (click)="logout('V')">
+          <span class="cssIconMenu">
+            <fa-icon icon="sign-out-alt"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">خروج</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="cssVersion">
+        <div>
+          <img src="../../../assets/images/logo/logo4.png" alt="error_logo" />
+        </div>
+        <div>
+          <span class="cssV">Version 3.1</span>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <ion-menu side="start" contentId="main" menuId="directeur-menu">
+    <ion-content class="cssMenu">
+      <div class="bgColorProfi">
+        <div class="profil">
+          <ion-avatar>
+            <img
+              [src]="profileURL"
+              onerror="this.src='../assets/images/register/user1.png';"
+              draggable="false"
+            />
+          </ion-avatar>
+          
+          <div class="detail">
+            <div class="almarai-bold">{{ name }}</div>
+          </div>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item [routerLink]="['/vendeur-addproduct', { role: 'D' }]">
+          <span class="cssIconMenu">
+            <fa-icon icon="cart-plus"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >إضافة منتج جديد</ion-label
+          >
+        </ion-item>
+        <ion-item [routerLink]="['/logregister', { ville: '', role: 'R' }]">
+          <span class="cssIconMenu">
+            <fa-icon icon="user-plus"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >إضافة مسؤول جديد</ion-label
+          >
+        </ion-item>
+        <ion-item routerLink="/vendeur-my-product">
+          <span class="cssIconMenu">
+            <fa-icon icon="store"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu"
+            >قائمة المنتوجات</ion-label
+          >
+        </ion-item>
+        <ion-item routerLink="/responsable-settings" *ngIf="role == 'D'">
+          <span class="cssIconMenu">
+            <fa-icon icon="cog"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">تعديلات</ion-label>
+        </ion-item>
+        <ion-item (click)="logout('D')">
+          <span class="cssIconMenu">
+            <fa-icon icon="sign-out-alt"></fa-icon>
+          </span>
+          <ion-label class="almarai-bold cssItemMenu">خروج</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="cssVersion">
+        <div>
+          <img src="../../../assets/images/logo/logo4.png" alt="error_logo" />
+        </div>
+        <div>
+          <span class="cssV">Version 3.1</span>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" routerLink="/vendeur-home">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+      لائحة عملائي
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-grid class="ion-no-padding">
+    <div class="cssHeight">
+      <div class="cssSticky">
+
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssContainer cssNbrTotal">
+              <span class="cssLibel tajawal-Bold">العدد الإجمالي للعملاء :</span>
+              <span class="cssValue">{{nbrConsomateurTotal}}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="ion-no-padding" style="margin: 5px !important;">
+            <div class="cssContainer cssZone">
+              <span class="cssLibel tajawal-Bold">المنطقة</span>
+              <span class="cssValue tajawal-Boldd">{{quartier}}</span>
+            </div>
+          </ion-col>
+
+          <ion-col  class="ion-no-padding" style="margin: 5px !important;">
+            <div class="cssContainer cssNbrConsomateur">
+              <span class="cssLibel tajawal-Bold">عدد العملاء</span>
+              <span class="cssValue">{{data2.length}}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <ion-list>
+              <ion-radio-group (ionChange)="dayChanged()" [(ngModel)]="day">
+                <ion-list-header>
+                  <ion-label class="cssLibel tajawal-Bold" style="text-align: center;">
+                    الايام
+                  </ion-label>
+                </ion-list-header>
+
+
+                <ion-item *ngFor="let d of data" style="--background: #f1f2f6;margin: 10px;">
+                  <ion-label class="cssLibel tajawal-Bold">{{d.jour}} -- {{d.quartier}}</ion-label>
+                  <ion-radio [value]="d.day"></ion-radio>
+                </ion-item>
+              
+              </ion-radio-group>
+            </ion-list>
+                      </ion-col>
+        </ion-row>
+        
+    <ion-row *ngFor="let d of data2">
+        <ion-col class="ion-no-padding">
+          <div class="cssContainer cssSmallCard">
+            <div class="cssNom">
+              <div class="cssValue1">{{d.nomprenom}}</div>
+              <div class="cssValue2">{{d.id}}</div>
+            </div>
+            <div class="cssdate">
+              <div class="cssLibel tajawal-Boldd">تاريخ التسجيل</div>
+              <div class="cssValue">{{d.dateinscription}}</div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      </div>
+  
+
+    </div>
+  </ion-grid>
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="btnBack">رجوع</ion-button>
+    </ion-buttons>
+    <ion-title class="tajawal-Bold cssTitleHead">
+      سبب رفض الطلب
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-radio-group (ionChange)="radioGroupChange($event)">
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">لم يحتاج اي منتج اليوم</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">وقت التوزيع غير مناسب</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">يوم التوزيع غير مناسب</ion-label>
+        <ion-radio value="3"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">ثمن غير مشجع</ion-label>
+        <ion-radio value="4"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">غير راضي عن الخدمة</ion-label>
+        <ion-radio value="5"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">متخوف و غير مقتنع بالخدمة</ion-label>
+        <ion-radio value="6"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">في عطلة (مسافر)</ion-label>
+        <ion-radio value="7"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">رحل الى مكان اخر</ion-label>
+        <ion-radio value="8"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="cssItem almarai-Regular">شئ آخر ...</ion-label>
+        <ion-radio value="9"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-item *ngIf="chosen_number==9">
+      <ion-textarea [(ngModel)]="custom_motif" placeholder="شئ آخر ..."  rows="2" cols="20"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <div class="cssBtn">
+    <ion-button (click)="sendMofitRejectOreder()" class="tajawal-Boldd">إرسال</ion-button>
+  </div>
+
+    
+</ion-content>

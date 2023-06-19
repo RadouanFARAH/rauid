@@ -1,0 +1,95 @@
+.cssMenu .cssIconMenu{
+    margin-left: 16px;
+}
+.cssMenu .cssIconMenu fa-icon{
+    font-size: 24px;
+    color: #555;
+}
+.cssMenu .cssItemMenu{
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+}
+
+.cssVersion{
+    margin: 40px 10px;
+    text-align: center;
+}
+.cssVersion img{ 
+    width: 110px;
+    height: auto;
+}
+.cssVersion .cssV{
+    font-size: 12px;
+    font-weight: 600;
+    color: #E50914;
+}
+.bgColorProfi{ 
+    background-color: #E50914;
+}
+.bgColorProfi .profil{
+    display: flex;
+    align-items: center;
+    height: 160px;
+    padding: 10px 20px 15px 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.bgColorProfi .profil ion-avatar{
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+}
+.bgColorProfi .profil img{
+    width: 100%;
+    height: 100%;
+} 
+  
+.bgColorProfi .detail{
+    margin: 0px 6px;
+    color: #fff;
+}
+.bgColorProfi .detail div{
+    margin-bottom: 8px;
+    font-size: 18px; 
+}
+.bgColorProfi .profil h4{
+    margin: 0px;
+    font-size: 16px;
+    color: rgb(255, 200, 200);
+}
+.custom-menu-item.item {
+    pointer-events: auto !important;
+}
+ion-item[button] {
+    pointer-events: auto !important;
+}
+
+@media only screen and (max-width: 362px) {
+    .bgColorProfi .profil{
+        padding: 10px;
+    }
+    .bgColorProfi .profil ion-avatar{
+        width: 90px;
+        height: 90px;
+        margin-left: 10px;
+    }
+
+    .bgColorProfi .detail div{
+        font-size: 15px; 
+    }
+    .bgColorProfi .profil h4{
+        font-size: 14px;
+    }
+
+
+    .cssMenu .cssIconMenu{
+        margin-left: 12px;
+    }
+    .cssMenu .cssIconMenu fa-icon{
+        font-size: 20px;
+    }
+    .cssMenu .cssItemMenu{
+        font-size: 16px;
+    }
+}

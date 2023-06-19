@@ -1,0 +1,78 @@
+<ion-content class="bgInterface1">
+  <ion-grid>
+    <div class="cssContainer">
+      <ion-row>
+        <ion-col>
+          <img src="../../../assets/images/logo/logo.png" alt="error" class="cssLogo" draggable="false">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p class="cssTitle tajawal-Medium">تسجيل الدخول</p>
+        </ion-col>
+      </ion-row>
+
+      <form class="cssForm" [formGroup]="dataForm">
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-label class="cssLabel tajawal-Medium">إسم آلمستخدم</ion-label>
+              <ion-input placeholder="البريد الإلكتروني أو رقم الهاتف" type="text" [name]="identifant"
+                class="cssInput tajawal-Medium" formControlName="id" autocomplete="off">
+              </ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-label class="cssLabel tajawal-Medium"> الرمز السري</ion-label>
+              <ion-input placeholder="&#11044; &#11044; &#11044; &#11044; &#11044; &#11044; &#11044; &#11044;"
+                [type]="!showPassword ? 'password' : 'text'" class="cssInput tajawal-Medium" [name]="password"
+                formControlName="pwd" autocomplete="off">
+              </ion-input>
+              <ion-icon slot="start" [name]="passwordToggleIcon" (click)="togglePassword()" class="icon-login">
+              </ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="cssBtnContainer">
+              <ion-button expand="block" class="tajawal-Bold cssBtn color1" (click)="login()">
+                دخول <ion-spinner style="color:red; margin-right: 10px;" *ngIf="spinner"></ion-spinner>
+              </ion-button>
+
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="cssLink">
+            
+            <h3 (click)="changePassword()" class="tajawal-Boldd">تغيير كلمة السر ؟</h3>
+            <h3 routerLink="/logcity" class="tajawal-Boldd">لازلت لا تملك حساب ؟<span>إضغط هنا</span></h3>
+      </ion-col>
+    </ion-row>
+  </form>
+
+    </div>
+  </ion-grid>
+
+    <div class="alerte" *ngIf="showErrorAlerte">
+    <div class="box2">
+      <div class="successImg">
+        <img src="../../../assets/images/errorAlert1.gif" alt="error" draggable="false">
+      </div>
+      <div class="message">
+        <p id="koho" class="message_content tajawal-Medium">
+          فشل في محاولة التسجيل. المرجو منك إعادة العملية.
+        </p>
+        <div class="message_btn_Err">
+          <button class="tajawal-Medium" (click)="reDo()">إعادة المحاولة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

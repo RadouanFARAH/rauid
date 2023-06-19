@@ -1,0 +1,47 @@
+.cssHeight{
+    margin-top: 16px;
+}
+.cssCard{
+    height: 55px;
+    margin: 4px 10px;
+    padding: 4px 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    color: #fff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cssCard .cssDate{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cssCard .cssLibel{
+    font-size: 15px;
+    margin-left: 8px;
+}
+.cssCard .cssValue{
+    font-size: 16px;
+}
+
+
+@media only screen and (max-width: 362px) {
+    .cssCard{
+        height: 46px;
+    }
+
+    .cssCard .cssDate{
+        font-size: 13px;
+    }
+
+    .cssCard .cssLibel{
+        font-size: 14px;
+        margin-left: 6px;
+    }
+    .cssCard .cssValue{
+        font-size: 14px;
+    }
+
+}

@@ -1,0 +1,135 @@
+.cssForm {
+    width: 96%;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+
+.cssLabel {
+    width: 19%;
+    font-size: 12px;
+    color: #444;
+    min-width: 100px;
+}
+
+.cssInput,
+.cssTextAera {
+    margin: 6px 0px 16px 0px;
+    --background: #fff !important;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 15px;
+}
+.cssInput {
+    height: 50px;
+}
+ion-col {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.cssImgages {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.cssbtnImg {
+    img {
+        height: 90px;
+    }
+    width: 90px;
+    height: 90px;
+
+    background: #fdfdfd;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.cssbtnImg22 {
+    width: 90px;
+    background: #f0344c;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cssbtnImg2 {
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.cssbtnImg fa-icon {
+    font-size: 36px;
+    color: rgba(212, 16, 16, 0.473);
+}
+
+.cssImg {
+    width: 88px;
+    height: 88px;
+    padding: 10px 5px;
+    background: #fff;
+    border: 2px #aaa dashed;
+    border-radius: 10px;
+}
+ion-button {
+    width: 100%;
+    height: 60px;
+    margin: 3px !important;
+    --background: #f0344c;
+    color: #fff !important;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 362px) {
+    .cssForm {
+        margin-top: 14px !important;
+    }
+
+    .cssLabel {
+        font-size: 10px !important;
+    }
+
+    .cssInput,
+    .cssTextAera {
+        margin: 0px 0px 6px 0px;
+        padding: 10px 0px;
+        padding-right: 6px !important;
+        border-radius: 4px;
+        font-size: 11px;
+    }
+    .cssInput {
+        height: 44px;
+    }
+    ion-button {
+        height: 50px;
+        font-size: 17px;
+        --border-radius: 4px !important;
+    }
+}
+
+.file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+
+.fileLabel {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+.fileLabelB {
+    position: relative;
+    text-align: center;
+    margin: 15px;
+}

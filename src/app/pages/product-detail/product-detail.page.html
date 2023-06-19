@@ -1,0 +1,128 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+
+    <ion-title class="tajawal-Bold cssTitleHead">
+      <span class="cssBtnHeaderLeft" (click)="goBack()">
+        <fa-icon icon="arrow-left"></fa-icon>
+      </span>
+
+      <span class="cssBtnHeader" [routerLink]="['/my-cart']">
+        <fa-icon icon="shopping-basket"></fa-icon>
+        <ion-badge *ngIf="commandeNum > 0">{{commandeNum}}</ion-badge>
+      </span>
+      تفاصيل المنتوج
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+
+    <ion-slides>
+    <ion-slide *ngFor="let img of imgs">
+      <img [src]="img" alt="@ub">
+    </ion-slide>
+  </ion-slides>
+
+    <ion-grid>
+        <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="cssCard">
+          <div class="cssTitle Almarai-Bold">{{data.productInfos.nom}}</div>
+          <div class="cssPrix">
+            <div class="cssPrixFinal tajawal-Medium">
+              <span>{{data.productInfos.special?data.productInfos.prixspecial:data.productInfos.prixFinal}}</span> درهم
+            </div>
+            <div class="cssPrixInitial tajawal-Medium">
+              <span>{{data.productInfos.prixInitial}} درهم</span> 
+            </div>
+            <div class="cssPrixFinal  tajawal-Medium reduction">
+              <span>{{data.productInfos.reduction}}% -</span>
+            </div>
+          </div>
+          <div class="cssDescription">
+            <p class="cssLibel tajawal-Boldd"></p>
+            <p *ngIf="data.productInfos.point_c!=0"  class="tajawal-Boldd">+ <span style="color: rgb(61, 212, 41);">{{data.productInfos.point_c}}</span> نقاط لكل وحدة</p>
+            <p  *ngIf="data.productInfos.point_v!=0"  class="tajawal-Boldd">+ <span style="color: rgb(212, 52, 41);">{{data.productInfos.point_v}}</span>.</p>
+          </div>
+          <div class="cssDescription" *ngIf="data.productInfos.description">
+            <p class="cssLibel tajawal-Boldd">وصف المنتج :</p>
+            <p >{{data.productInfos.description}}</p>
+          </div>
+          <p *ngIf="!data.productInfos.special">
+            <span class="cssLibel tajawal-Boldd">ثمن التوصيل :</span>
+            <span class="cssValue tajawal-Medium">{{data.productInfos.deliveryPrice}}</span> درهم
+          </p>
+                  </div>
+
+      </ion-col>
+    </ion-row>
+
+        <ion-row *ngIf="data.productInfos.quantity!=0">
+      <ion-col *ngIf="qte!=0">
+        <div class="cssQuantity">
+          <div class="cssAddMinus" (click)="minusQty()">
+            <fa-icon icon="minus"></fa-icon>
+          </div>
+          <div class="cssQty">
+            {{qte}}
+          </div>
+          <div [ngClass]="{'cssAddMinus':true, 'grey_back':enableToOrder, 'grey':!enableToOrder}"  (click)="addQty()">
+            <fa-icon icon="plus"></fa-icon>
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col *ngIf="qte==0">
+        <ion-button class="tajawal-Boldd" (click)="addQty()">أضف إلى السلة</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="tajawal-Boldd" *ngIf="data.productInfos.quantity==0">
+      لم يعد متوفر حاليا
+    </ion-row>
+
+        
+        <ion-row>
+      <ion-col class="ion-no-padding" style="margin: 10px 0px !important;">
+
+        <div class="cssCard2">
+          <div>
+            <span class="cssLibel tajawal-Boldd">إسم البائع :</span>
+            <span class="cssValue tajawal-Medium">{{data.vendeurInfos.nom}}</span>
+          </div>
+          <div>
+            <ion-button (click)="call(data.vendeurInfos.tel)" class="ion-no-padding tajawal-Bold">
+              تواصل
+              <fa-icon icon="phone-alt"></fa-icon>
+            </ion-button>
+          </div>
+        </div>
+        <div class="cssSecurity">
+          <span class="cssLibel">
+            <fa-icon icon="shield-alt"></fa-icon>
+          </span>
+          <span class="cssValue tajawal-Medium">إرجاع المنتج مجانًا خلال 7 أيام وفق الشروط المنصوص عليها</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let img of imgs">
+      <ion-col class="ion-no-padding">
+        <div class="cssImages">
+        <img [src]="img" alt="error">
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

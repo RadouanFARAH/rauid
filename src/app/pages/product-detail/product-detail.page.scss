@@ -1,0 +1,236 @@
+ion-slides {
+    height: 54%;
+    background: #fff;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+ion-slides img{
+    width: 100%;
+    height: auto;
+}
+ion-button{
+    width: 100% !important;
+    height: 50px !important;
+    margin: 15px 0px !important;
+    --color: #ffffff;
+    font-size: 17px;
+    --background: #ff4747 !important;
+    border-radius: 10px;
+}
+
+.cssQuantity{
+    display: flex;
+    justify-content: space-between;
+    width: 100% !important;
+    height: 50px !important;
+    background: #ff4747 !important;
+    border-radius: 4px;
+    margin: 15px 0px !important;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.cssQuantity .cssAddMinus{
+    width: 30%;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0px 14px 0px;
+    cursor: pointer;
+}
+.cssQuantity .cssQty{
+    width: 40%;
+    font-size: 34px;
+    text-align: center;
+    font-weight: 700;
+    color: #ff4747;
+    background: #fff !important;
+    border: 1px solid #ff4747;
+}
+.cssCard{
+    margin: 0px auto !important;
+    padding: 8px !important;
+    color: #333;
+}
+.cssCard .cssTitle{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.cssCard .cssPrix{
+    display: flex;
+    justify-content: flex-start;
+    align-items :center;
+}
+.cssCard .cssPrixFinal{
+    font-size: 24px;
+    margin-left: 20px;
+    color: #000;
+}
+.cssCard .cssPrixFinal span{
+    font-weight: 700;
+}
+.cssCard .cssPrixInitial{
+    font-size: 14px;
+    color: #999;
+    margin-left: 20px;
+    position: relative;
+    top: 7px;
+}
+.cssCard .cssPrixInitial span{
+
+    text-decoration: line-through;
+}
+.cssCard .reduction {
+    color: #ff4747;
+    background-color: #ffffff;
+    padding: 5px;
+    font-size: 12;
+}
+.cssCard .cssDescription{
+    margin: 8px;
+}
+.cssCard .cssDescription p{
+    font-size: 15px;
+    text-align: justify;
+    margin-bottom: 4px;
+}
+.cssCard .cssDescription p:first-child{
+    font-size: 16px;
+    font-weight: 600;
+}
+.cssCard2{
+    border-top: 1px solid #ddd;
+    padding: 8px auto !important;
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cssCard2 .cssLibel{
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 20px;
+    padding-right: 16px;
+}
+.cssCard2 .cssValue{
+    font-size: 15px;
+}
+.cssCard2 ion-button{
+    width: 100px !important;
+    height: 40px !important;
+    margin: 0px !important;
+    --color: #ffffff;
+    font-size: 15px;
+    --background: #ff4747 !important;
+    border-radius: 10px;
+    padding-left: 16px !important;
+}
+
+.cssSecurity{
+    font-size: 14px;
+    color: #888;
+    padding: 16px;
+    margin: 10px 0px;
+}
+.cssSecurity .cssLibel{
+    margin-left: 8px;
+}
+.cssImages{
+    width: 96%;
+    margin: 4px auto;
+}
+.cssImages img{
+    width: 100%;
+    height: auto;
+}
+.cssPromotion{
+    width: 80px;
+    height: 35px;
+    border-radius: 9px;
+    position: relative;
+    top: -32px;
+    left: -14px;
+    font-size: 24px;
+    font-weight: 600;
+}
+@media only screen and (max-width: 362px) {
+    ion-slides {
+        height: 50%;
+    }
+    .cssPromotion{
+        width: 80px; height: 35px;
+        border-radius: 9px;
+        position: relative;
+        top: -32px; left: -14px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    ion-button{
+        height: 40px !important;
+        margin: 10px 0px !important;
+        --border-radius: 4px;
+    }
+    .cssQuantity{
+        height: 40px !important;
+        border-radius: 4px;
+        margin: 10px 0px !important;
+    }
+    .cssQuantity .cssAddMinus{
+        font-size: 17px;
+        text-align: center;
+        padding: 7px 0px;
+        cursor: pointer;
+    }
+    .cssQuantity .cssQty{
+        font-size: 18px;
+    }
+    .cssQuantity .cssQty span{
+        font-size: 26px;
+    }
+    .cssCard{
+        --padding: 5px auto !important;
+    }
+    .cssContentCard p:first-child{
+        padding-top: 8px !important;
+    }
+    .cssContentCard p:last-child{
+        padding-bottom: 8px !important;
+    }
+
+    .cssContentCard .cssLibel, .cssContentCard2 .cssLibel{
+        font-size: 13px;
+        margin-left: 8px;
+    }
+    .cssContentCard .cssValue, .cssContentCard2 .cssValue{
+        font-size: 14px;
+    }
+    .cssCard2{
+        --padding: 6px auto !important;
+        --border-radius: 4px !important;
+    }
+    .cssContentCard2 p{
+        padding: 5px 10px 0px 8px!important;
+    }
+
+    .cssContentCard2 p:first-child{
+        padding-top: 10px !important;
+    }
+    .cssContentCard2 p:last-child{
+        padding-bottom: 10px !important;
+    }
+    .cssContentCard2 .cssButtonCover{
+        width: 90px;
+        position: absolute;
+        left: 10px; bottom: 14px;
+    }
+    .cssContentCard2 ion-button{
+        height: 36px !important;
+        font-size: 13px;
+        --border-radius: 4px !important;
+    }
+}
+
+.grey_back{
+    background: #c0bebe !important;
+}
+.grey{
+    background: #ff4747 !important;
+}

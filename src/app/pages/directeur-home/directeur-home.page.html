@@ -1,0 +1,70 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cssHeader bgheader">
+    <ion-buttons slot="end">
+      <ion-menu-button menu="directeur-menu" style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="tajawal-Bold cssTitleHead">
+            واجهة المدير
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgInterface2">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="bubbles" refreshingText="rechargement...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="ion-no-padding">
+
+        <div class="cssResponsable">
+      <ng-container> 
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="cssCol cssBackground1">
+              <span class="cssLibel almarai-ExtraBold">عدد المسؤولين:</span>
+              <span class="tajawal-Medium cssNumber">{{this.data2.length}}</span>
+            </div>
+          </ion-col>
+
+          <ion-col class="ion-no-padding">
+            <div class="cssCol cssBackground2">
+              <span class="cssLibel almarai-ExtraBold">اليوم :</span>
+              <span class="cssValue tajawal-Medium">{{data.jour}}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </div>
+
+        <div class="cssContainer" >
+      <ion-row>
+        <ion-col size="6" *ngFor="let d of data2" class="ion-no-padding">
+          <div class="cssCardVendeur" (click)="goTo(d.id)">
+            <div class="cssAvatar">
+              <p class="cssRole Tajawal-Boldd ">مسؤول</p>
+              <img [src]="url+'/images/image_profile_image_'+d.id+'.png'" onerror="this.src='../../assets/images/register/user1.png';">
+                          </div>
+            <div class="cssInfos">
+              <div class="cssName Tajawal-Boldd">{{d.nomprenom}}</div>
+              <div class="cssZone Tajawal-Medium">عدد البائعين: {{d.nombre}}</div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+
+</ion-content>
+
+
+
+
+ <!--  
+<ion-footer style="color:white">
+  <ion-toolbar  color="dark" mode="ios">
+    <ion-title><a target="_blank" style="color:white; text-decoration:non;" class="tajawal-Boldd policy"  routerLink="/policy">سياسة الخصوصية</a> </ion-title>
+  </ion-toolbar>
+</ion-footer>
+-->

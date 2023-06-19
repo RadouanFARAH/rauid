@@ -1,0 +1,54 @@
+
+.file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+
+.fileLabel {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+.fileLabelB {
+    position: relative;
+    text-align: center;
+    margin: 15px;
+}
+
+
+
+
+
+
+.cssInput,
+.cssTextAera {
+    margin: 6px 0px 16px 0px;
+    --background: #fff !important;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 15px;
+}
+.cssInput {
+    height: 50px;
+}
+.fullWidth{
+    width: 100%;
+}
+.max_content{
+    width: max-content;
+}
+.space-arround{
+    justify-content: space-between;
+    gap: 5%;
+    margin: 10px 5%;
+    place-content: center;
+}
+
+
+.bs-red{
+    color: #E50914;
+}
+
+
